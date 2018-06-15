@@ -146,30 +146,22 @@ public class AjudaCRUD {
     }
 
     
-    public List<Ajuda> ListaAjudas(int idUsuario, int buffingFeed, int distancia, int offset) throws Exception {
+    public List<Ajuda> ListaAjudasFeed(int idUsuario) throws Exception {
          ArrayList<Ajuda> ajudas = new ArrayList<>(); 
 
         // carregar o driver           
        // criar a declaracao (statement) sql
        
-       String sql = "select * from _local l2 inner join Ajuda a on a.idLocal = l2.id inner join usuario u on u.id = a.idUsuario"
-               + " inner join localusuario lu on lu.idUsuario = u.id inner join _local l on l.id = lu.idLocal "
-               + "where (sqrt((l2.latitude - l.latitude)*(l2.latitude - l.latitude)))+"
-               + "(sqrt((l2.longitude - l.longitude)*(l2.longitude - l.longitude)))<? and u.id = ? "
-               + "ORDER BY a.id DESC limit ?;";
+       String sql = "select * from Ajuda a inner join _local l on l.id = a.idLocal inner join localusuario lu on lu.idLocal = l.id inner join Usuario u on u.id = lu.idUsuario"
+               + "where u.id = ? ORDER BY a.id DESC ;";
               
        Connection conecta = ConectaMysql.getConexao();
        PreparedStatement stmt =conecta.prepareStatement(sql);
        stmt.setInt(1, idUsuario);
-       stmt.setInt(2, distancia);
-       stmt.setInt(3, offset+buffingFeed);
        // executar instrucao sql
        ResultSet rs = stmt.executeQuery();
-       int aux = 1;
        // manipular o resultado da instrucao sql
        while(rs.next()){
-            //regeita os 'offset'primeiros
-            if(aux>offset){
                Ajuda ajuda = new Ajuda();
                ajuda.setTitulo(rs.getString("titulo"));
                ajuda.setTipo(rs.getString("tipo"));
@@ -178,8 +170,6 @@ public class AjudaCRUD {
                ajuda.setIdLocal(rs.getInt("idLocal"));
                ajuda.setIdUsuario(rs.getInt("idUsuario"));
                ajudas.add(ajuda);
-            }
-            aux++;
        }
 
        stmt.close();

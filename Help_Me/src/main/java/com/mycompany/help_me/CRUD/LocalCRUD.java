@@ -5,6 +5,7 @@
  */
 package com.mycompany.help_me.CRUD;
 
+import Controllers.FuncoesUteis;
 import Modelos.Local;
 import conexao.ConectaMysql;
 import java.sql.Connection;
@@ -13,23 +14,35 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
  * @author Clecio
  */
 public class LocalCRUD {
-
+    public static void main(String[] args) {
+        Local l = new Local(0,"casdaasdadsa","sasdasdasdm",-29.710731f, -53.712217f);
+        try {
+            LocalCRUD lc = new LocalCRUD();
+            lc.InsertLocal(l,1);
+        } catch (Exception ex) {
+            Logger.getLogger(LocalCRUD.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
     public LocalCRUD() {
     }
-    public void InsertLocal(Local local) throws Exception{
-        String sql = "insert into _local(nome,latitude,longitude)"
-                + "values (?,?,?);";
+    public void InsertLocal(Local local,int idUsuario) throws Exception{
+        local.setCidade(FuncoesUteis.GetCidade(local.getLatitude(),local.getLongitude()));
+        String sql = "SELECT insertLocal(?,?,?,?,?);";
         Connection conecta = ConectaMysql.getConexao();
         PreparedStatement stmt =conecta.prepareStatement(sql);
         stmt.setString(1, local.getNome());
-        stmt.setFloat(2, local.getLatitude());
-        stmt.setFloat(3, local.getLongitude());
+        stmt.setString(2, local.getCidade());
+        stmt.setFloat(3, local.getLatitude());
+        stmt.setFloat(4, local.getLongitude());
+        stmt.setFloat(5, idUsuario);
         stmt.execute();
         stmt.close();
         conecta.close();
@@ -55,6 +68,7 @@ public class LocalCRUD {
         Local local = new Local();
         while(rs.next()){
             local.setNome(rs.getString("nome"));
+            local.setCidade(rs.getString("cidade"));
             local.setId(rs.getInt("id"));
             local.setLatitude(rs.getFloat("latitude"));
             local.setLongitude(rs.getFloat("longitude"));
@@ -78,6 +92,7 @@ public class LocalCRUD {
        while(rs.next()){
            Local local = new Local();
            local.setId(rs.getInt("id"));
+           local.setCidade(rs.getString("cidade"));
            local.setLatitude(rs.getFloat("latitude"));
            local.setLongitude(rs.getFloat("longitude"));
            local.setNome(rs.getString("nome"));
@@ -90,14 +105,17 @@ public class LocalCRUD {
     }
     
     public void UpdateLocal(Local local) throws Exception{
-        String sql = "update _local set nome =?, latitude =?, longitude =?"
+        local.setCidade(FuncoesUteis.GetCidade(local.getLatitude(),local.getLongitude()));
+        String sql = "update _local set nome =?, cidade=?, latitude =?, longitude =?"
                 + "where id = ?";
         Connection conecta = ConectaMysql.getConexao();
         PreparedStatement stmt =conecta.prepareStatement(sql);
+        
         stmt.setString(1, local.getNome());
-        stmt.setFloat(2, local.getLatitude());
-        stmt.setFloat(3, local.getLongitude());
-        stmt.setInt(4, local.getId());
+        stmt.setString(2, local.getCidade());
+        stmt.setFloat(3, local.getLatitude());
+        stmt.setFloat(4, local.getLongitude());
+        stmt.setInt(5, local.getId());
         stmt.executeUpdate();
         stmt.close();
         conecta.close();
@@ -108,8 +126,7 @@ public class LocalCRUD {
 
         // carregar o driver           
        // criar a declaracao (statement) sql
-       String sql = "select * from _local l where exists("
-               + "select id from LocalUsuario lu inner join Usuario u on u.id = lu.idUsuario  where l.id = lu.idLocal and lu.idUsuario = ? ); ";
+       String sql = "select * from _local l inner join localUsuario lu on lu.idLocal = l.id inner join Usuario u on lu.idUsuario = u.id where u.id = ? ); ";
        Connection conecta = ConectaMysql.getConexao();
        PreparedStatement stmt =conecta.prepareStatement(sql);
        stmt.setInt(1, idUsuario);
@@ -119,6 +136,7 @@ public class LocalCRUD {
        while(rs.next()){
            Local local = new Local();
            local.setId(rs.getInt("id"));
+           local.setCidade(rs.getString("cidade"));
            local.setLatitude(rs.getFloat("latitude"));
            local.setLongitude(rs.getFloat("longitude"));
            local.setNome(rs.getString("nome"));

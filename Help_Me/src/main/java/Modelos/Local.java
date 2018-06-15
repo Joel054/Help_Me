@@ -12,6 +12,7 @@ package Modelos;
 public class Local {
     private int id;
     private String nome;
+    private String cidade;
     private float latitude;
     private float longitude;
 
@@ -22,9 +23,10 @@ public class Local {
         this.id = id;
     }
 
-    public Local(int id, String nome, float latitude, float longitude) {
+    public Local(int id, String nome, String cidade, float latitude, float longitude) {
         this.id = id;
         this.nome = nome;
+        this.cidade = cidade;
         this.latitude = latitude;
         this.longitude = longitude;
     }
@@ -59,6 +61,14 @@ public class Local {
 
     public void setLatitude(float latitude) {
         this.latitude = latitude;
+    }
+
+    public String getCidade() {
+        return cidade;
+    }
+
+    public void setCidade(String cidade) {
+        this.cidade = cidade;
     }
     
 }

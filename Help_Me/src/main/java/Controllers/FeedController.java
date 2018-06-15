@@ -29,11 +29,11 @@ public class FeedController {
         if(usuario != null){
             AjudaCRUD ajudaCrud = new AjudaCRUD();
             usuario.setLocais();
-            List<Ajuda> ajudasFeed = ajudaCrud.ListaAjudas(usuario.getId(),SetingValues.getBuffingFeed(), SetingValues.getRaioAceito(),0);
+            List<Ajuda> ajudasFeed = ajudaCrud.ListaAjudasFeed(usuario.getId());
             mv  = new ModelAndView(SetingValues.Requests.Feed.toString());
             mv.addObject("UsuarioLogado", usuario);
             mv.addObject("ajudasFeed", ajudasFeed);
-            mv.addObject("offset",SetingValues.getBuffingFeed());
+           // mv.addObject("offset",SetingValues.getBuffingFeed());
         }else{
             mv  = new ModelAndView(SetingValues.Requests.Login_Error.toString());
         }
@@ -52,6 +52,21 @@ public class FeedController {
             mv.addObject("perfilUsuario");
         }else{
             mv = new ModelAndView(SetingValues.Requests.Perfil_Error.toString());
+        }
+        return mv;
+    }
+    @RequestMapping("Registrar")
+    public ModelAndView RegistrerUser(String linkFacebook) throws Exception{
+        ModelAndView mv = null;
+        UsuarioCRUD usuarioCrud = new UsuarioCRUD();
+        Usuario usuario = usuarioCrud.Autentica(linkFacebook);
+        if(usuario != null){
+            mv  = new ModelAndView(SetingValues.Requests.User_already_exists.toString());            
+        }else{
+            AjudaCRUD ajudaCrud = new AjudaCRUD();
+            usuario = new Usuario(linkFacebook);
+            usuarioCrud.InsertUsuario(usuario);
+            login(linkFacebook);
         }
         return mv;
     }
