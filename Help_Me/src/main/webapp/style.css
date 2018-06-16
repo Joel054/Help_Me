@@ -46,3 +46,6 @@ footer{
     left: 0;
     width: 100%;
 }
+.light-red{
+    background-color: #fd314d !important;
+}
