@@ -1,1 +1,13 @@
+<<<<<<< HEAD
 
+=======
+/Help_Me/target/
+Help_Me/target/
+nbproject/private/
+build/
+nbbuild/
+dist/
+nbdist/
+.nb-gradle/
+nbactions.xml
+>>>>>>> d6f52c82040133d7a363afc0993e747b37460aef
