@@ -6,6 +6,7 @@
 package Controllers;
 
 import Modelos.Ajuda;
+import Modelos.Facebook;
 import Modelos.Usuario;
 import com.mycompany.help_me.CRUD.AjudaCRUD;
 import com.mycompany.help_me.CRUD.UsuarioCRUD;
@@ -28,6 +29,7 @@ public class FeedController {
         Usuario usuario = usuarioCrud.Autentica(linkFacebook);
         if(usuario != null){
             AjudaCRUD ajudaCrud = new AjudaCRUD();
+            Facebook facebook = usuarioCrud.call_me(linkFacebook);
             usuario.setLocais();
             List<Ajuda> ajudasFeed = ajudaCrud.ListaAjudasFeed(usuario.getId());
             mv  = new ModelAndView(SetingValues.Requests.Feed.toString());

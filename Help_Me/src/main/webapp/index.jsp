@@ -42,7 +42,15 @@
            console.log(response.authResponse.accessToken);
            //alert(response.authResponse.accessToken);
            if (response.status === 'connected') {
-               window.location.href='inicio.jsp?access_token='+response.authResponse.accessToken; 
+               //window.location.href='inicio.jsp?access_token='+response.authResponse.accessToken;
+               function loadDoc() {
+                var xhttp = new XMLHttpRequest();
+                xhttp.onreadystatechange = function() {
+                  
+                };
+                xhttp.open("POST", "login?linkFacebook="+ response.authResponse.accessToken, true);
+                xhttp.send();
+              }
            } else {
            // The person is not logged into your app or we are unable to tell.
            document.getElementById('status').innerHTML = 'Please log ' +

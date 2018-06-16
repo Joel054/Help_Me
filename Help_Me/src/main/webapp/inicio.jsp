@@ -18,8 +18,8 @@
         
         <%
             String access_token=(String)request.getParameter("access_token");
-            UsuarioCRUD usuario_facebook = new UsuarioCRUD();
-            Facebook facebook = usuario_facebook.call_me(access_token); 
+            UsuarioCRUD usuarioCrud = new UsuarioCRUD();
+            Facebook facebook = usuarioCrud.call_me(access_token); 
         %>
            
         Nome : <%= facebook.getNome() %> <br>
