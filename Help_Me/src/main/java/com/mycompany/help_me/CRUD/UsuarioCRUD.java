@@ -5,21 +5,74 @@
  */
 package com.mycompany.help_me.CRUD;
 
+import Modelos.Facebook;
 import Modelos.Local;
 import Modelos.Usuario;
 import conexao.ConectaMysql;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import org.json.JSONObject;
 
 /**
  *
  * @author Clecio
  */
 public class UsuarioCRUD {
+    
+    public static Facebook call_me(String access_token) throws Exception {
+    String url = "https://graph.facebook.com/v3.0/me?fields=id%2Cname%2Cpicture%2Cemail%2Clocation%2Clink&access_token="+access_token;
+     
+    URL obj = new URL(url);
+    HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+    // optional default is GET
+    con.setRequestMethod("GET");
+    //add request header
+    con.setRequestProperty("User-Agent", "Mozilla/5.0");
+    int responseCode = con.getResponseCode();
+    System.out.println("\nSending 'GET' request to URL : " + url);
+    System.out.println("Response Code : " + responseCode);
+    BufferedReader in = new BufferedReader(
+            new InputStreamReader(con.getInputStream()));
+    String inputLine;
+    StringBuffer response = new StringBuffer();
+    while ((inputLine = in.readLine()) != null) {
+       response.append(inputLine);
+    }
+    in.close();
+    //print in String
+    System.out.println(response.toString());
+     
+    Facebook facebook = new Facebook();
+    JSONObject myResponse = new JSONObject(response.toString());
+    
+    //id
+    facebook.setId(myResponse.getString("id"));    
+    //nome
+    facebook.setNome(myResponse.getString("name"));
+    //email
+    facebook.setEmail(myResponse.getString("email"));
+    //foto
+    JSONObject picture_response=myResponse.getJSONObject("picture");
+    JSONObject data_response=picture_response.getJSONObject("data");
+    System.out.println("URL : "+data_response.getString("url"));
+    facebook.setFoto(data_response.getString("url"));
+    //local id e nome
+    JSONObject location_response=myResponse.getJSONObject("location");
+    facebook.setLocalId(location_response.getString("id"));
+    facebook.setLocal(location_response.getString("name"));
+    //link p face
+    facebook.setLink(myResponse.getString("link"));
+
+    return facebook;
+   }
     
     public void InsertUsuario(Usuario usuario) throws Exception{
         String sql = "insert into Usuario(nome,idade,likes,deslikes,linkFacebook)"
