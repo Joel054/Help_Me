@@ -1,0 +1,149 @@
+@media only screen and (min-width: 1500px) {
+    .sub-logo{
+        font-size: 25px;
+        padding-left: 30px!important;
+        padding-top: 90px!important;
+    }
+    .logo-mi {
+        padding-top: 0!important;
+        font: 120px moon light;
+    }
+    .logo-relp{font: 180px moon light;}
+    .l-help{height: 170px;}
+}
+@media only screen and (min-width: 1200px) and (max-height: 1499px) {
+    .sub-logo{
+        font-size: 25px;
+        padding-left: 40px!important;
+        padding-top: 20px!important;
+    }
+    .logo-mi {
+        padding-top: 70px;
+        font: 120px moon light;
+    }
+    .logo-relp{font: 120px moon light;}
+    .l-help{height: 170px;}
+}
+@media (max-width:1199px) {
+    .sub-logo{
+        font-size: 25px;
+        padding-left: 80px!important;
+        padding-top: 15px!important;
+    }
+    .logo-mi {
+        padding-top: 70px;
+        font: 120px moon light;
+    }
+    .logo-relp{font: 120px moon light;}
+    .l-help{height: 170px;}
+}
+@media (min-width:992px) and (max-width:1199px) {
+     .sub-logo{
+        font-size: 25px;
+        padding-left: 80px!important;
+        padding-top: 15px!important;
+    }
+    .logo-mi {
+        padding-top: 70px;
+        font: 120px moon light;
+    }
+    .logo-relp{font: 120px moon light;}
+    .l-help{height: 170px;}
+}
+@media (max-width:991px) {
+    .sub-logo{
+        font-size: 25px;
+        padding-left: 80px!important;
+        padding-top: 15px!important;
+    }
+    .logo-mi {
+        padding-top: 70px;
+        font: 120px moon light;
+    }
+    .logo-relp{font: 120px moon light;}
+    .l-help{height: 170px;}
+}
+@media (min-width:768px) and (max-width:991px) {
+    .sub-logo{
+        font-size: 25px;
+        padding-left: 80px!important;
+        padding-top: 15px!important;
+    }
+    .logo-mi {
+        padding-top: 70px;
+        font: 120px moon light;
+    }
+    .logo-relp{font: 120px moon light;}
+    .l-help{height: 170px;}
+}
+@media (max-width:767px) {
+    .sub-logo{
+        font-size: 30px;
+        padding-left: 80px!important;
+        padding-top: 15px!important;
+    }
+    .logo-mi {
+        padding-top: 70px;
+        font: 120px moon light;
+    }
+    .logo-relp{font: 120px moon light;}
+    .l-help{height: 170px;}
+
+}
+@media (min-width:601px) and (max-width:667px) {
+    .sub-logo{
+        font-size: 30px;
+        padding-left: 80px!important;
+        padding-top: 15px!important;
+    }
+    .logo-mi {
+        padding-top: 80px;
+        font: 110px moon light;
+    }
+    .logo-relp{font: 100px moon light;}
+    .l-help{
+        height: 150px;
+
+    }
+}
+@media (min-width:576px) and (max-width:600px) {
+    .sub-logo{font-size: 35px;}
+    .logo-mi {
+        padding-top: 80px;
+        font: 120px moon light;
+    }
+    .logo-relp{font: 130px moon light;}
+    .l-help{
+        height: 190px;
+
+    }
+}
+
+@media (max-width:575px) {
+    .sub-logo{
+        font-size: 25px;
+        padding-left: 60px!important;
+        padding-top: 20px!important;
+    }
+    .logo-mi {font: 110px moon light;}
+    .logo-relp{font: 120px moon light;}
+    .l-help{height: 150px;}
+}
+@media (min-width:440px) and (max-width:574px) {
+    .sub-logo{
+        font-size: 27px;
+        padding-left: 20px!important;
+        padding-top: 25px!important;
+    }
+}
+
+@media only screen and (max-width: 320px) {
+    .sub-logo{
+        font-size: 20px;
+        padding-left: 60px!important;
+        padding-top: 20px!important;
+    }
+    .logo-mi {font: 100px moon light;}
+    .logo-relp{font: 80px moon light;}
+    .l-help{height: 140px;}
+}
