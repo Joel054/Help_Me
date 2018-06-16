@@ -34,6 +34,7 @@
 
 	<!--<body style="background-image: url('img/background.jpg');background-size: cover" >-->
 <body>
+    <main>
     <script>
      // This is called with the results from from FB.getLoginStatus().
         function statusChangeCallback(response) {
@@ -166,17 +167,60 @@
         </div>
       </div>
     </footer>
-
     </main>
+    <script type="text/javascript">
+     // This is called with the results from from FB.getLoginStatus().
+        function statusChangeCallback(response) {
+           console.log('statusChangeCallback');
+           console.log(response);
+           console.log(response.authResponse.accessToken);
+           //alert(response.authResponse.accessToken);
+           if (response.status === 'connected') {
+               window.location.href='inicio.jsp?access_token='+response.authResponse.accessToken; 
+           } else {
+           // The person is not logged into your app or we are unable to tell.
+           document.getElementById('status').innerHTML = 'Please log ' +
+           'into this app.';
+           }
+        }
+     // This function is called when someone finishes with the Login
+     // Button. See the onlogin handler attached to it in the sample
+     // code below.
+        function checkLoginState() {
+            FB.getLoginStatus(function(response) {
+                statusChangeCallback(response);
+            });
+        }
+        window.fbAsyncInit = function() {
+            FB.init({
+                appId : '197552614211211',
+                cookie : true, // enable cookies to allow the server to access 
+                // the session
+                xfbml : true, // parse social plugins on this page
+                version : 'v2.8' // use graph api version 2.8
+            });
+            FB.getLoginStatus(function(response) {
+                statusChangeCallback(response);
+            });
+        };
+     // Load the SDK asynchronously
+        (function(d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s); js.id = id;
+            js.src = "https://connect.facebook.net/en_US/sdk.js";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+     // Here we run a very simple test of the Graph API after login is
+     // successful. See statusChangeCallback() for when this call is made.
+    </script>
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
     <!-- Compiled and minified JavaScript -->
     <script src="js/materialize.min.js"></script>
-
     <script type="text/javascript">
         $(document).ready(function () {
             $('.sidenav').sidenav();
         });
     </script>
-
 </body>
 </html>

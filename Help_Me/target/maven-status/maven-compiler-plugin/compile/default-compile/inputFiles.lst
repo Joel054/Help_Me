@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 D:\Clecio\UFSM\semestre 6\Projeto de Software 1\Help_me\Help_Me\src\main\java\csi\com\mycompany\help_me\CRUD\AjudaCRUD.java
 D:\Clecio\UFSM\semestre 6\Projeto de Software 1\Help_me\Help_Me\src\main\java\csi\Modelos\Local.java
 D:\Clecio\UFSM\semestre 6\Projeto de Software 1\Help_me\Help_Me\src\main\java\csi\Controllers\SetingValues.java
@@ -17,3 +18,23 @@ D:\Clecio\UFSM\semestre 6\Projeto de Software 1\Help_me\Help_Me\src\main\java\cs
 D:\Clecio\UFSM\semestre 6\Projeto de Software 1\Help_me\Help_Me\src\main\java\csi\com\mycompany\help_me\CRUD\AjudaProcessoCRUD.java
 D:\Clecio\UFSM\semestre 6\Projeto de Software 1\Help_me\Help_Me\src\main\java\csi\com\mycompany\help_me\CRUD\LocalUsuarioCRUD.java
 D:\Clecio\UFSM\semestre 6\Projeto de Software 1\Help_me\Help_Me\src\main\java\csi\Modelos\Facebook.java
+=======
+C:\Users\Joel\Desktop\Help-me\Help_Me\src\main\java\Controllers\AjudaEmProcessoController.java
+C:\Users\Joel\Desktop\Help-me\Help_Me\src\main\java\Controllers\LocalController.java
+C:\Users\Joel\Desktop\Help-me\Help_Me\src\main\java\conexao\ConectaMysql.java
+C:\Users\Joel\Desktop\Help-me\Help_Me\src\main\java\com\mycompany\help_me\CRUD\AjudaCRUD.java
+C:\Users\Joel\Desktop\Help-me\Help_Me\src\main\java\com\mycompany\help_me\CRUD\UsuarioCRUD.java
+C:\Users\Joel\Desktop\Help-me\Help_Me\src\main\java\Controllers\SetingValues.java
+C:\Users\Joel\Desktop\Help-me\Help_Me\src\main\java\com\mycompany\help_me\CRUD\LocalUsuarioCRUD.java
+C:\Users\Joel\Desktop\Help-me\Help_Me\src\main\java\com\mycompany\help_me\CRUD\LocalCRUD.java
+C:\Users\Joel\Desktop\Help-me\Help_Me\src\main\java\Controllers\AjudaController.java
+C:\Users\Joel\Desktop\Help-me\Help_Me\src\main\java\Modelos\Ajuda.java
+C:\Users\Joel\Desktop\Help-me\Help_Me\src\main\java\Modelos\Facebook.java
+C:\Users\Joel\Desktop\Help-me\Help_Me\src\main\java\Modelos\LocalUsuario.java
+C:\Users\Joel\Desktop\Help-me\Help_Me\src\main\java\Modelos\Usuario.java
+C:\Users\Joel\Desktop\Help-me\Help_Me\src\main\java\com\mycompany\help_me\CRUD\AjudaProcessoCRUD.java
+C:\Users\Joel\Desktop\Help-me\Help_Me\src\main\java\Controllers\FeedController.java
+C:\Users\Joel\Desktop\Help-me\Help_Me\src\main\java\Modelos\AjudaProcesso.java
+C:\Users\Joel\Desktop\Help-me\Help_Me\src\main\java\Controllers\FuncoesUteis.java
+C:\Users\Joel\Desktop\Help-me\Help_Me\src\main\java\Modelos\Local.java
+>>>>>>> 9f1a255ef13f54564490043faf026198f335d47f
