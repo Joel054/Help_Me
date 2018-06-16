@@ -1,4 +1,3 @@
-<<<<<<< HEAD:Help_Me/src/main/webapp/WEB-INF/jsp/inicio.jsp
 <%-- 
     Document   : Cadastro
     Created on : 15/06/2018, 21:33:11
@@ -7,34 +6,10 @@
 
 <%@page import="csi.Modelos.Facebook"%>
 <%@page import="csi.com.mycompany.help_me.CRUD.UsuarioCRUD"%>
-=======
-<%@page import="Modelos.Facebook"%>
-<%@page import="com.mycompany.help_me.CRUD.UsuarioCRUD"%>
->>>>>>> 9f1a255ef13f54564490043faf026198f335d47f:Help_Me/src/main/webapp/inicio.jsp
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<!DOCTYPE html>
-<html>
-<<<<<<< HEAD:Help_Me/src/main/webapp/WEB-INF/jsp/inicio.jsp
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
-    </head>
-    <body>
-        <h1>Olá</h1>
-        Nome: ${facebook.nome}
-        <%
-           // String access_token=(String)request.getParameter("access_token");
-            //UsuarioCRUD usuarioCrud = new UsuarioCRUD();
-          //  Facebook facebook = usuarioCrud.call_me(access_token); 
-        %>
-           
-      
-    </body>
-</html>
-=======
-    
 <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>Help Mi</title>
     <!--Import Google Icon Font-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -46,11 +21,7 @@
     <link rel="stylesheet" type="text/css" href="style.css">
     <link rel="stylesheet" type="text/css" href="css/responsive.css">
     <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
-    <%
-        String access_token=(String)request.getParameter("access_token");
-        UsuarioCRUD usuario_facebook = new UsuarioCRUD();
-        Facebook facebook = usuario_facebook.call_me(access_token); 
-    %>
+
 </head>
 <!--<div id="fb-root"></div>-->
     <script>(function(d, s, id) {
@@ -85,7 +56,7 @@
                     class="material-icons right">expand_more</i></a>
             <!-- Dropdown Structure -->
             <ul id='dropdown1' class='dropdown-content black-text'>
-                <li style="text-align: center"><a href="#!" class="black-text"><img src="<%= facebook.getFoto()%>" class="circle">
+                <li style="text-align: center"><a href="#!" class="black-text"><img src="${facebook.foto}" class="circle">
                         Perfil</a></li>
                 <li><a href="#!" class="black-text">Inicio</a></li>
                 <li><a href="#!" class="black-text">Inicio</a></li>
@@ -102,7 +73,7 @@
                 <div class="background orange">
 
                 </div>
-                    <a href="#user" class="black-text" style="text-align: center"><img src="<%= facebook.getFoto()%>" class="circle"></a>
+                    <a href="#user" class="black-text" style="text-align: center"><img src="${facebook.foto}" class="circle"></a>
                     <a href="#name"><span class="white-text name">Olá</span></a>
                     <a href="#email"><span class="white-text email">Oriente-se</span></a>
                 </div>
@@ -137,8 +108,10 @@
         <i class="large material-icons">add_location</i>
     </a>
 </div>
-
-
+    <div class="card">
+        <h1>Olá</h1>
+        Nome: ${facebook.nome}
+    </div>
 <main>
     
     <!--busca-->
@@ -413,4 +386,4 @@
 
 </body>
 </html>
->>>>>>> 9f1a255ef13f54564490043faf026198f335d47f:Help_Me/src/main/webapp/inicio.jsp
+
