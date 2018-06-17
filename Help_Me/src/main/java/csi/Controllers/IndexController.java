@@ -26,7 +26,7 @@ public class IndexController {
     @RequestMapping("inicial")
     public String home(){
         
-        return "index";
+        return SetingValues.Requests.Index.toString();
     }
     
     @RequestMapping(value = {""})

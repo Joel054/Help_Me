@@ -18,34 +18,34 @@ import org.springframework.web.servlet.ModelAndView;
 public class AjudaEmProcessoController {
     
     @RequestMapping("newAjudaEmProcesso")
-    public ModelAndView NewAjudaEmProcesso(AjudaProcesso ajudaProcesso)throws Exception{
+    public ModelAndView NewAjudaEmProcesso(AjudaProcesso ajudaProcesso, int idUsuario)throws Exception{
         ModelAndView mv = null;
         AjudaProcessoCRUD ac = new AjudaProcessoCRUD();
         ac.InsertAjudaProcesso(ajudaProcesso);
         
-        //adicionar models and view
+        mv = FuncoesUteis.GeraMVFeed(idUsuario, SetingValues.Requests.Feed.toString());
         
         return mv;
     }
     
     @RequestMapping("updateAjudaEmProcesso")
-    public ModelAndView UpdatejudaEmProcesso(AjudaProcesso ajudaProcesso)throws Exception{
+    public ModelAndView UpdatejudaEmProcesso(AjudaProcesso ajudaProcesso, int idUsuario)throws Exception{
         ModelAndView mv = null;
         AjudaProcessoCRUD ac = new AjudaProcessoCRUD();
         ac.UpdateAjudaProcesso(ajudaProcesso);
         
-        //adicionar models and view
+        mv = FuncoesUteis.GeraMVFeed(idUsuario, SetingValues.Requests.Feed.toString());
         
         return mv;
     }
     
     @RequestMapping("deleteAjudaEmProcesso")
-    public ModelAndView DeletejudaEmProcesso(int idAjudaProcesso)throws Exception{
+    public ModelAndView DeletejudaEmProcesso(int idAjudaProcesso, int idUsuario)throws Exception{
         ModelAndView mv = null;
         AjudaProcessoCRUD ac = new AjudaProcessoCRUD();
         ac.DeleteAjudaProcesso(idAjudaProcesso);
         
-        //adicionar models and view
+        mv = FuncoesUteis.GeraMVFeed(idUsuario, SetingValues.Requests.Feed.toString());
         
         return mv;
     }

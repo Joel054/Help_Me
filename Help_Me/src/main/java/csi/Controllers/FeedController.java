@@ -31,46 +31,24 @@ public class FeedController {
         UsuarioCRUD usuarioCrud = new UsuarioCRUD();
         Usuario usuario = usuarioCrud.Autentica(linkFacebook);
         if(usuario != null){
-            AjudaCRUD ajudaCrud = new AjudaCRUD();
-            System.out.println(linkFacebook+"                               aqqqqqqq");
-            Facebook facebook = usuarioCrud.call_me(linkFacebook);
-            usuario.setLocais();
-            List<Ajuda> ajudasFeed = ajudaCrud.ListaAjudasFeed(usuario.getId());
-            mv  = new ModelAndView(SetingValues.Requests.Feed.toString());
-            mv.addObject("UsuarioLogado", usuario);
-            mv.addObject("ajudasFeed", ajudasFeed);
-            mv.addObject("facebook", facebook);
+            mv = FuncoesUteis.GeraMVFeed(usuario.getId(), SetingValues.Requests.Feed.toString());
            // mv.addObject("offset",SetingValues.getBuffingFeed());
         }else{
-            mv  = new ModelAndView(SetingValues.Requests.Feed.toString());
-            Facebook facebook = usuarioCrud.call_me(linkFacebook);
-            mv.addObject("facebook", facebook);
+            mv  = new ModelAndView(SetingValues.Requests.Index.toString());
+            mv.addObject("LoginError", "Usuario não existente");
         }
         return mv;
     }
     
-    
-    @RequestMapping("getPerfil")
-    public ModelAndView getPerfil(int idUsuario) throws Exception{
-        UsuarioCRUD usuarioCrud = new UsuarioCRUD();
-        Usuario usuario = usuarioCrud.GetUsuario(idUsuario);
-        ModelAndView mv;
-        if(usuario != null){
-            usuario.setPerfilAll();
-            mv = new ModelAndView(SetingValues.Requests.Perfil_Logged_User.toString());
-            mv.addObject("perfilUsuario");
-        }else{
-            mv = new ModelAndView(SetingValues.Requests.Perfil_Error.toString());
-        }
-        return mv;
-    }
+  
     @RequestMapping("Registrar")
     public ModelAndView RegistrerUser(String linkFacebook) throws Exception{
         ModelAndView mv = null;
         UsuarioCRUD usuarioCrud = new UsuarioCRUD();
         Usuario usuario = usuarioCrud.Autentica(linkFacebook);
         if(usuario != null){
-            mv  = new ModelAndView(SetingValues.Requests.User_already_exists.toString());            
+            mv  = new ModelAndView(SetingValues.Requests.Index.toString());
+            mv.addObject("RegisterError", "Usuario ja existente");         
         }else{
             AjudaCRUD ajudaCrud = new AjudaCRUD();
             usuario = new Usuario(linkFacebook);

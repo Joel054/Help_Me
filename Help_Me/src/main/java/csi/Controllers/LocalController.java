@@ -23,30 +23,25 @@ public class LocalController {
         LocalCRUD lc = new LocalCRUD();
         lc.InsertLocal(local,idUsuario);
         
-        //adicionar models and view
+        return FuncoesUteis.GeraMVFeed(idUsuario, SetingValues.Requests.Feed.toString());
         
-        return mv;
     }
     
     @RequestMapping("updateLocal")
-    public ModelAndView UpdateLocal(Local local) throws Exception{
+    public ModelAndView UpdateLocal(Local local, int idUsuario) throws Exception{
         ModelAndView mv = null;
         LocalCRUD lc = new LocalCRUD();
         lc.UpdateLocal(local);
         
-        //adicionar models and view
-        
-        return mv;
+        return FuncoesUteis.GeraMVFeed(idUsuario, SetingValues.Requests.Feed.toString());
     }
     
     @RequestMapping("deleteLocal")
-    public ModelAndView DeleteLocal(int idLocal) throws Exception{
+    public ModelAndView DeleteLocal(int idLocal, int idUsuario) throws Exception{
         ModelAndView mv = null;
         LocalCRUD lc = new LocalCRUD();
         lc.DeleteLocal(idLocal);
         
-        //adicionar models and view
-        
-        return mv;
+        return FuncoesUteis.GeraMVFeed(idUsuario, SetingValues.Requests.Feed.toString());
     }
 }

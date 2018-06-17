@@ -16,7 +16,7 @@ import java.util.List;
 public class Usuario {
     private int id = -1;
     private String nome;
-    private int idade;
+    private int idade;//não usado
     private int likes;
     private int deslikes;
     private String linkFacebook;

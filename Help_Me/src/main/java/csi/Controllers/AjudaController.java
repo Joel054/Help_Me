@@ -23,7 +23,7 @@ public class AjudaController {
         AjudaCRUD ac = new AjudaCRUD();
         ac.InsertAjuda(ajuda);
         
-        //adicionar models and view
+        mv = FuncoesUteis.GeraMVFeed(ajuda.getIdUsuario(), SetingValues.Requests.Feed.toString());
         
         return mv;
     }
@@ -34,18 +34,18 @@ public class AjudaController {
         AjudaCRUD ac = new AjudaCRUD();
         ac.UpdateAjuda(ajuda);
         
-        //adicionar models and view
+        mv = FuncoesUteis.GeraMVFeed(ajuda.getIdUsuario(), SetingValues.Requests.Feed.toString());
         
         return mv;
     }
     
     @RequestMapping("deleteAjuda")
-    public ModelAndView EditAjuda(int idAjuda) throws Exception{
+    public ModelAndView EditAjuda(int idAjuda,int idUsuario) throws Exception{
         ModelAndView mv = null;
         AjudaCRUD ac = new AjudaCRUD();
         ac.DeleteAjuda(idAjuda);
         
-        //adicionar models and view
+        mv = FuncoesUteis.GeraMVFeed(idUsuario, SetingValues.Requests.Feed.toString());
         
         return mv;
     }

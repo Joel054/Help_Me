@@ -50,6 +50,12 @@ public class SetingValues {
             public String toString(){
                 return ("/PerfilOterUser.jsp");
             }
+        },
+        Index{
+            @Override
+            public String toString(){
+                return ("index");
+            }
         }
     };
     private static final int buffingFeed = 10;

@@ -9,6 +9,7 @@ import csi.Modelos.Ajuda;
 import csi.Modelos.Local;
 import csi.Modelos.Usuario;
 import csi.Controllers.SetingValues;
+import csi.Modelos.Facebook;
 import csi.com.mycompany.help_me.CRUD.AjudaCRUD;
 import csi.com.mycompany.help_me.CRUD.LocalCRUD;
 import csi.com.mycompany.help_me.CRUD.UsuarioCRUD;
@@ -44,20 +45,21 @@ public class FuncoesUteis {
                 ll.add(l2);
 	       GetDistancias(l1,ll);
     }
-    public static ModelAndView GeraMV(int idUsuario, String view) throws Exception{
+    public static ModelAndView GeraMVFeed(int idUsuario, String view) throws Exception{
         ModelAndView mv = null;
         
         UsuarioCRUD usuarioCrud = new UsuarioCRUD();
         Usuario usuario = usuarioCrud.GetUsuario(idUsuario);
         usuario.setPerfilAll();
         AjudaCRUD ajudaCrud = new AjudaCRUD();
-        
-        List<Ajuda> ajudasFeed = ajudaCrud.ListaAjudas(usuario.getId());
+        Facebook facebook = usuarioCrud.call_me(usuario.getLinkFacebook());
+        List<Ajuda> ajudasFeed = ajudaCrud.ListaAjudasFeed(usuario.getId());
         try{
             
             mv  = new ModelAndView(view);
             mv.addObject("UsuarioLogado", usuario);
             mv.addObject("ajudasFeed", ajudasFeed);
+            mv.addObject("facebook", facebook);
             
         } catch (Exception ex) {
             Logger.getLogger(FuncoesUteis.class.getName()).log(Level.SEVERE, null, ex);
