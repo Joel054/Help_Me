@@ -27,15 +27,18 @@ public class FeedController {
     
     @RequestMapping("login")
     public ModelAndView login(String linkFacebook) throws Exception{
+            System.out.println("sdfsfsdfsdfsdfsdfsdfsdf");
         ModelAndView mv = null;
         UsuarioCRUD usuarioCrud = new UsuarioCRUD();
         Usuario usuario = usuarioCrud.Autentica(linkFacebook);
         if(usuario != null){
+            System.out.println(""+usuario.getId()+"   linkface:  "+usuario.getLinkFacebook());
             mv = FuncoesUteis.GeraMVFeed(usuario.getId(), SetingValues.Requests.Feed.toString());
            // mv.addObject("offset",SetingValues.getBuffingFeed());
         }else{
             mv  = new ModelAndView(SetingValues.Requests.Index.toString());
             mv.addObject("LoginError", "Usuario não existente");
+            mv.addObject("logedAuto","não logar");
         }
         return mv;
     }

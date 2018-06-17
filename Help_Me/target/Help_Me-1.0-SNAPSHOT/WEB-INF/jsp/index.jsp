@@ -34,6 +34,7 @@
 
 	<!--<body style="background-image: url('img/background.jpg');background-size: cover" >-->
 <body>
+    <main>
     <script>
      // This is called with the results from from FB.getLoginStatus().
         function statusChangeCallback(response) {
@@ -68,7 +69,8 @@
                 version : 'v2.8' // use graph api version 2.8
             });
             FB.getLoginStatus(function(response) {
-                statusChangeCallback(response);
+                if(${logedAuto == null})
+                    statusChangeCallback(response);
             });
         };
      // Load the SDK asynchronously
@@ -135,7 +137,7 @@
                     <!--</div>-->
 
                     <div class="btn-fb" style="margin-top: 40px;">
-                        <form action="login" method="post" id="fukForm" name="fukForm">
+                        <form action="login" method="post" id="fukForm">
                             <input type="hidden" name="linkFacebook" id="linkFacebook"/>
                         </form>  
                         <a class=" fb-login-button waves-effect waves-light btn-large z-depth-3" data-max-rows="1" data-size="large" data-button-type="login_with" data-show-faces="false" data-auto-logout-link="true" data-use-continue-as="true" scope="public_profile,email,user_location,user_link" onlogin="checkLoginState();"></a>
@@ -166,17 +168,15 @@
         </div>
       </div>
     </footer>
-
     </main>
+    
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
     <!-- Compiled and minified JavaScript -->
     <script src="js/materialize.min.js"></script>
-
     <script type="text/javascript">
         $(document).ready(function () {
             $('.sidenav').sidenav();
         });
     </script>
-
 </body>
 </html>
