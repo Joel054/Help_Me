@@ -27,7 +27,7 @@ public class FeedController {
     
     @RequestMapping("login")
     public ModelAndView login(String linkFacebook) throws Exception{
-            System.out.println("sdfsfsdfsdfsdfsdfsdfsdf");
+        System.out.println("sdfsfsdfsdfsdfsdfsdfsdf");
         ModelAndView mv = null;
         UsuarioCRUD usuarioCrud = new UsuarioCRUD();
         Usuario usuario = usuarioCrud.Autentica(linkFacebook);
@@ -44,7 +44,7 @@ public class FeedController {
     }
     
   
-    @RequestMapping("Registrar")
+    @RequestMapping("registrar")
     public ModelAndView RegistrerUser(String linkFacebook) throws Exception{
         ModelAndView mv = null;
         UsuarioCRUD usuarioCrud = new UsuarioCRUD();
@@ -56,7 +56,7 @@ public class FeedController {
             AjudaCRUD ajudaCrud = new AjudaCRUD();
             usuario = new Usuario(linkFacebook);
             usuarioCrud.InsertUsuario(usuario);
-            login(linkFacebook);
+            mv = login(linkFacebook);
         }
         return mv;
     }

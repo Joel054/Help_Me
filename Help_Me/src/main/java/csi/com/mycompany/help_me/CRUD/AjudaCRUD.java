@@ -152,7 +152,7 @@ public class AjudaCRUD {
         // carregar o driver           
        // criar a declaracao (statement) sql
        
-       String sql = "select * from Ajuda a inner join _local l on l.id = a.idLocal inner join localusuario lu on lu.idLocal = l.id inner join Usuario u on u.id = lu.idUsuario"
+       String sql = "select * from Ajuda a inner join _local l on l.id = a.idLocal inner join localusuario lu on lu.idLocal = l.id inner join Usuario u on u.id = lu.idUsuario "
                + "where u.id = ? ORDER BY a.id DESC ;";
               
        Connection conecta = ConectaMysql.getConexao();

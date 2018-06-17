@@ -46,6 +46,7 @@
                //window.location.href='inicio.jsp?access_token='+response.authResponse.accessToken;
                 document.getElementById('linkFacebook').value = ""+response.authResponse.accessToken;
                 document.getElementById('fukForm').submit();
+                
            } else {
            // The person is not logged into your app or we are unable to tell.
            document.getElementById('status').innerHTML = 'Please log ' +
@@ -57,6 +58,13 @@
      // code below.
         function checkLoginState() {
             FB.getLoginStatus(function(response) {
+                document.getElementById('fukForm').action='login';
+                statusChangeCallback(response);
+            });
+        }
+        function checkLoginStateReg() {
+            FB.getLoginStatus(function(response) {
+                document.getElementById('fukForm').action='registrar';
                 statusChangeCallback(response);
             });
         }
@@ -141,7 +149,9 @@
                             <input type="hidden" name="linkFacebook" id="linkFacebook"/>
                         </form>  
                         <a class=" fb-login-button waves-effect waves-light btn-large z-depth-3" data-max-rows="1" data-size="large" data-button-type="login_with" data-show-faces="false" data-auto-logout-link="true" data-use-continue-as="true" scope="public_profile,email,user_location,user_link" onlogin="checkLoginState();"></a>
-                       
+                        
+                        <a class="fb-login-button waves-effect waves-light btn-large z-depth-3" data-max-rows="1" data-size="large" data-button-type="login_with" data-show-faces="false" data-auto-logout-link="true" data-use-continue-as="true" scope="public_profile,email,user_location,user_link" onlogin="checkLoginStateReg();">registr-se</a>
+                        
                     </div>
                     
                 </div>

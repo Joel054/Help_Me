@@ -126,7 +126,7 @@ public class LocalCRUD {
 
         // carregar o driver           
        // criar a declaracao (statement) sql
-       String sql = "select * from _local l inner join localUsuario lu on lu.idLocal = l.id inner join Usuario u on lu.idUsuario = u.id where u.id = ? ); ";
+       String sql = "select * from _local l inner join localUsuario lu on lu.idLocal = l.id inner join Usuario u on lu.idUsuario = u.id where u.id = ? ; ";
        Connection conecta = ConectaMysql.getConexao();
        PreparedStatement stmt =conecta.prepareStatement(sql);
        stmt.setInt(1, idUsuario);
