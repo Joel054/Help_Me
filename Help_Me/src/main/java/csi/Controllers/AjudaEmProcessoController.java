@@ -18,7 +18,7 @@ import org.springframework.web.servlet.ModelAndView;
 public class AjudaEmProcessoController {
     
     @RequestMapping("newAjudaEmProcesso")
-    public ModelAndView NewAjudaEmProcesso(AjudaProcesso ajudaProcesso, int idUsuario)throws Exception{
+    public ModelAndView NewAjudaEmProcesso(AjudaProcesso ajudaProcesso, String idUsuario)throws Exception{
         ModelAndView mv = null;
         AjudaProcessoCRUD ac = new AjudaProcessoCRUD();
         ac.InsertAjudaProcesso(ajudaProcesso);
@@ -29,7 +29,7 @@ public class AjudaEmProcessoController {
     }
     
     @RequestMapping("updateAjudaEmProcesso")
-    public ModelAndView UpdatejudaEmProcesso(AjudaProcesso ajudaProcesso, int idUsuario)throws Exception{
+    public ModelAndView UpdatejudaEmProcesso(AjudaProcesso ajudaProcesso, String idUsuario)throws Exception{
         ModelAndView mv = null;
         AjudaProcessoCRUD ac = new AjudaProcessoCRUD();
         ac.UpdateAjudaProcesso(ajudaProcesso);
@@ -40,7 +40,7 @@ public class AjudaEmProcessoController {
     }
     
     @RequestMapping("deleteAjudaEmProcesso")
-    public ModelAndView DeletejudaEmProcesso(int idAjudaProcesso, int idUsuario)throws Exception{
+    public ModelAndView DeletejudaEmProcesso(int idAjudaProcesso, String idUsuario)throws Exception{
         ModelAndView mv = null;
         AjudaProcessoCRUD ac = new AjudaProcessoCRUD();
         ac.DeleteAjudaProcesso(idAjudaProcesso);

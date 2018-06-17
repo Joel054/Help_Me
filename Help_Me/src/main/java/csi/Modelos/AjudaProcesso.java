@@ -13,8 +13,8 @@ import csi.com.mycompany.help_me.CRUD.UsuarioCRUD;
  */
 public class AjudaProcesso {
     private int id;
-    private int idAjudado;
-    private int idAjudante;
+    private String idAjudado;
+    private String idAjudante;
     private int idAjuda;
     private StatusAjuda status;
     private Usuario ajudado;
@@ -27,7 +27,7 @@ public class AjudaProcesso {
         
     }
 
-    public AjudaProcesso(int id, int idAjudado, int idAjudante, int idAjuda, String status) throws Exception {
+    public AjudaProcesso(int id, String idAjudado, String idAjudante, int idAjuda, String status) throws Exception {
         this.id = id;
         setIdAjudado(idAjudado);
         setIdAjudante(idAjudante);
@@ -51,21 +51,21 @@ public class AjudaProcesso {
         this.id = id;
     }
 
-    public int getIdAjudado() {
+    public String getIdAjudado() {
         return idAjudado;
     }
 
-    public void setIdAjudado(int idAjudado) throws Exception {
+    public void setIdAjudado(String idAjudado) throws Exception {
         this.idAjudado = idAjudado;
         UsuarioCRUD uc = new UsuarioCRUD();
         ajudado = uc.GetUsuario(idAjudado);
     }
 
-    public int getIdAjudante() {
+    public String getIdAjudante() {
         return idAjudante;
     }
 
-    public void setIdAjudante(int idAjudante) throws Exception {
+    public void setIdAjudante(String idAjudante) throws Exception {
         this.idAjudante = idAjudante;
         UsuarioCRUD uc = new UsuarioCRUD();
         ajudante = uc.GetUsuario(idAjudante);

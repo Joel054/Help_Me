@@ -28,63 +28,64 @@ import org.json.JSONObject;
 public class UsuarioCRUD {
     
     public static Facebook call_me(String access_token) throws Exception {
-    String url = "https://graph.facebook.com/v3.0/me?fields=id%2Cname%2Cpicture%2Cemail%2Clocation%2Clink&access_token="+access_token;
+        String url = "https://graph.facebook.com/v3.0/me?fields=id%2Cname%2Cpicture%2Cemail%2Clocation%2Clink&access_token="+access_token;
      
         System.out.println(access_token+" linkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk");
-    URL obj = new URL(url);
-    HttpURLConnection con = (HttpURLConnection) obj.openConnection();
-    // optional default is GET
-    con.setRequestMethod("GET");
-    //add request header
-    con.setRequestProperty("User-Agent", "Mozilla/5.0");
-    int responseCode = con.getResponseCode();
-    System.out.println("\nSending 'GET' request to URL : " + url);
-    System.out.println("Response Code : " + responseCode);
-    BufferedReader in = new BufferedReader(
-            new InputStreamReader(con.getInputStream()));
-    String inputLine;
-    StringBuffer response = new StringBuffer();
-    while ((inputLine = in.readLine()) != null) {
-       response.append(inputLine);
-    }
-    in.close();
-    //print in String
-    System.out.println(response.toString());
-     
-    Facebook facebook = new Facebook();
-    JSONObject myResponse = new JSONObject(response.toString());
-    
-    //id
-    facebook.setId(myResponse.getString("id"));    
-    //nome
-    facebook.setNome(myResponse.getString("name"));
-    //email
-    facebook.setEmail(myResponse.getString("email"));
-    //foto
-    JSONObject picture_response=myResponse.getJSONObject("picture");
-    JSONObject data_response=picture_response.getJSONObject("data");
-    System.out.println("URL : "+data_response.getString("url"));
-    facebook.setFoto(data_response.getString("url"));
-    //local id e nome
-    JSONObject location_response=myResponse.getJSONObject("location");
-    facebook.setLocalId(location_response.getString("id"));
-    facebook.setLocal(location_response.getString("name"));
-    //link p face
-    facebook.setLink(myResponse.getString("link"));
+        URL obj = new URL(url);
+        HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+        // optional default is GET
+        con.setRequestMethod("GET");
+        //add request header
+        con.setRequestProperty("User-Agent", "Mozilla/5.0");
+        int responseCode = con.getResponseCode();
+        System.out.println("\nSending 'GET' request to URL : " + url);
+        System.out.println("Response Code : " + responseCode);
+        BufferedReader in = new BufferedReader(
+                new InputStreamReader(con.getInputStream()));
+        String inputLine;
+        StringBuffer response = new StringBuffer();
+        while ((inputLine = in.readLine()) != null) {
+           response.append(inputLine);
+        }
+        in.close();
+        //print in String
+        System.out.println(response.toString());
 
-    return facebook;
-   }
+        Facebook facebook = new Facebook();
+        JSONObject myResponse = new JSONObject(response.toString());
+
+        //id
+        facebook.setId(myResponse.getString("id"));    
+        //nome
+        facebook.setNome(myResponse.getString("name"));
+        //email
+        facebook.setEmail(myResponse.getString("email"));
+        //foto
+        JSONObject picture_response=myResponse.getJSONObject("picture");
+        JSONObject data_response=picture_response.getJSONObject("data");
+        System.out.println("URL : "+data_response.getString("url"));
+        facebook.setFoto(data_response.getString("url"));
+        //local id e nome
+        JSONObject location_response=myResponse.getJSONObject("location");
+        facebook.setLocalId(location_response.getString("id"));
+        facebook.setLocal(location_response.getString("name"));
+        //link p face
+        facebook.setLink(myResponse.getString("link"));
+        facebook.setAccess_token(access_token);
+        return facebook;
+    }
     
     public void InsertUsuario(Usuario usuario) throws Exception{
-        String sql = "insert into Usuario(nome,idade,likes,deslikes,linkFacebook)"
-                + "values (?,?,?,?,?);";
+        String sql = "insert into Usuario(id,nome,idade,likes,deslikes,linkFacebook)"
+                + "values (?,?,?,?,?,?);";
         Connection conecta = ConectaMysql.getConexao();
         PreparedStatement stmt =conecta.prepareStatement(sql);
-        stmt.setString(1, usuario.getNome());
-        stmt.setInt(2, usuario.getIdade());
-        stmt.setInt(3, usuario.getLikes());
-        stmt.setInt(4, usuario.getDeslikes());
-        stmt.setString(5, usuario.getLinkFacebook());
+        stmt.setString(1, usuario.getId());
+        stmt.setString(2, usuario.getNome());
+        stmt.setInt(3, usuario.getIdade());
+        stmt.setInt(4, usuario.getLikes());
+        stmt.setInt(5, usuario.getDeslikes());
+        stmt.setString(6, usuario.getLinkFacebook());
         stmt.execute();
         stmt.close();
         conecta.close();
@@ -101,16 +102,16 @@ public class UsuarioCRUD {
         conecta.close();
     }
     
-    public Usuario GetUsuario(int id) throws Exception{
+    public Usuario GetUsuario(String id) throws Exception{
         String sql = "select * from Usuario where id =?";
         Connection conecta = ConectaMysql.getConexao();
         PreparedStatement stmt =conecta.prepareStatement(sql);
-        stmt.setInt(1, id);
+        stmt.setString(1, id);
         ResultSet rs = stmt.executeQuery();
         Usuario usuario = new Usuario();
         while(rs.next()){
             usuario.setNome(rs.getString("nome"));
-            usuario.setId(rs.getInt("id"));
+            usuario.setId(rs.getString("id"));
             usuario.setIdade(rs.getInt("idade"));
             usuario.setLikes(rs.getInt("likes"));
             usuario.setDeslikes(rs.getInt("deslikes"));
@@ -149,7 +150,7 @@ public class UsuarioCRUD {
        while(rs.next()){
            Usuario usuario = new Usuario();
            usuario.setNome(rs.getString("nome"));
-           usuario.setId(rs.getInt("id"));
+           usuario.setId(rs.getString("id"));
            usuario.setIdade(rs.getInt("idade"));
            usuario.setLikes(rs.getInt("likes"));
            usuario.setDeslikes(rs.getInt("deslikes"));
@@ -173,24 +174,24 @@ public class UsuarioCRUD {
         stmt.setInt(3, usuario.getLikes());
         stmt.setInt(4, usuario.getDeslikes());
         stmt.setString(5, usuario.getLinkFacebook());
-        
+         stmt.setString(6, usuario.getId());
 
         stmt.executeUpdate();
         stmt.close();
             conecta.close();
     }
 
-    public Usuario Autentica(String linkFacebook) throws SQLException, Exception {
-        String sql = "select * from Usuario where linkFacebook =?";
+    public Usuario Autentica(String id) throws SQLException, Exception {
+        String sql = "select * from Usuario where id =?";
         Connection conecta = ConectaMysql.getConexao();
         PreparedStatement stmt =conecta.prepareStatement(sql);
-        stmt.setString(1, linkFacebook);
+        stmt.setString(1, id);
         ResultSet rs = stmt.executeQuery();
         Usuario usuario = null;
         while(rs.next()){
             usuario = new Usuario();
             usuario.setNome(rs.getString("nome"));
-            usuario.setId(rs.getInt("id"));
+            usuario.setId(rs.getString("id"));
             usuario.setIdade(rs.getInt("idade"));
             usuario.setLikes(rs.getInt("likes"));
             usuario.setDeslikes(rs.getInt("deslikes"));

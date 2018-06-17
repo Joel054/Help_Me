@@ -40,7 +40,7 @@ public class AjudaController {
     }
     
     @RequestMapping("deleteAjuda")
-    public ModelAndView EditAjuda(int idAjuda,int idUsuario) throws Exception{
+    public ModelAndView EditAjuda(int idAjuda,String idUsuario) throws Exception{
         ModelAndView mv = null;
         AjudaCRUD ac = new AjudaCRUD();
         ac.DeleteAjuda(idAjuda);

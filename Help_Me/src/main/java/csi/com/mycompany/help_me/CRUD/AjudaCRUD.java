@@ -35,7 +35,7 @@ public class AjudaCRUD {
         PreparedStatement stmt =conecta.prepareStatement(sql);
         stmt.setString(1, ajuda.getTitulo());
         stmt.setString(2, ajuda.getDescricao());
-        stmt.setInt(3, ajuda.getIdUsuario());
+        stmt.setString(3, ajuda.getIdUsuario());
         stmt.setInt(4, ajuda.getIdLocal());
         stmt.setString(5, ajuda.getTipo());
         stmt.execute();
@@ -67,7 +67,7 @@ public class AjudaCRUD {
             ajuda.setDescricao(rs.getString("descricao"));
             ajuda.setId(rs.getInt("id"));
             ajuda.setIdLocal(rs.getInt("idLocal"));
-            ajuda.setIdUsuario(rs.getInt("idUsuario"));
+            ajuda.setIdUsuario(rs.getString("idUsuario"));
         }
         stmt.close();
         conecta.close();
@@ -92,7 +92,7 @@ public class AjudaCRUD {
            ajuda.setDescricao(rs.getString("descricao"));
            ajuda.setId(rs.getInt("id"));
            ajuda.setIdLocal(rs.getInt("idLocal"));
-           ajuda.setIdUsuario(rs.getInt("idUsuario"));
+           ajuda.setIdUsuario(rs.getString("idUsuario"));
            ajudas.add(ajuda);
        }
 
@@ -108,7 +108,7 @@ public class AjudaCRUD {
         PreparedStatement stmt =conecta.prepareStatement(sql);
         stmt.setString(1, ajuda.getTitulo());
         stmt.setString(2, ajuda.getDescricao());
-        stmt.setInt(3, ajuda.getIdUsuario());
+        stmt.setString(3, ajuda.getIdUsuario());
         stmt.setInt(4, ajuda.getIdLocal());
         stmt.setString(5, ajuda.getTipo());
         stmt.setInt(6, ajuda.getId());
@@ -117,7 +117,7 @@ public class AjudaCRUD {
         conecta.close();
     }
 
-    public List<Ajuda> ListaAjudas(int idUsuario) throws Exception {
+    public List<Ajuda> ListaAjudas(String idUsuario) throws Exception {
             ArrayList<Ajuda> ajudas = new ArrayList<>(); 
 
         // carregar o driver           
@@ -125,7 +125,7 @@ public class AjudaCRUD {
        String sql = "select * from Ajuda a where idUsuario = ? ; ";
        Connection conecta = ConectaMysql.getConexao();
        PreparedStatement stmt =conecta.prepareStatement(sql);
-       stmt.setInt(1, idUsuario);
+       stmt.setString(1, idUsuario);
        // executar instrucao sql
        ResultSet rs = stmt.executeQuery();
        // manipular o resultado da instrucao sql
@@ -136,7 +136,7 @@ public class AjudaCRUD {
            ajuda.setDescricao(rs.getString("descricao"));
            ajuda.setId(rs.getInt("id"));
            ajuda.setIdLocal(rs.getInt("idLocal"));
-           ajuda.setIdUsuario(rs.getInt("idUsuario"));
+           ajuda.setIdUsuario(rs.getString("idUsuario"));
            ajudas.add(ajuda);
        }
 
@@ -146,18 +146,18 @@ public class AjudaCRUD {
     }
 
     
-    public List<Ajuda> ListaAjudasFeed(int idUsuario) throws Exception {
+    public List<Ajuda> ListaAjudasFeed(String idUsuario) throws Exception {
          ArrayList<Ajuda> ajudas = new ArrayList<>(); 
 
         // carregar o driver           
        // criar a declaracao (statement) sql
        
-       String sql = "select * from Ajuda a inner join _local l on l.id = a.idLocal inner join localusuario lu on lu.idLocal = l.id inner join Usuario u on u.id = lu.idUsuario"
+       String sql = "select * from Ajuda a inner join _local l on l.id = a.idLocal inner join localusuario lu on lu.idLocal = l.id inner join Usuario u on u.id = lu.idUsuario "
                + "where u.id = ? ORDER BY a.id DESC ;";
               
        Connection conecta = ConectaMysql.getConexao();
        PreparedStatement stmt =conecta.prepareStatement(sql);
-       stmt.setInt(1, idUsuario);
+       stmt.setString(1, idUsuario);
        // executar instrucao sql
        ResultSet rs = stmt.executeQuery();
        // manipular o resultado da instrucao sql
@@ -168,7 +168,7 @@ public class AjudaCRUD {
                ajuda.setDescricao(rs.getString("descricao"));
                ajuda.setId(rs.getInt("id"));
                ajuda.setIdLocal(rs.getInt("idLocal"));
-               ajuda.setIdUsuario(rs.getInt("idUsuario"));
+               ajuda.setIdUsuario(rs.getString("idUsuario"));
                ajudas.add(ajuda);
        }
 

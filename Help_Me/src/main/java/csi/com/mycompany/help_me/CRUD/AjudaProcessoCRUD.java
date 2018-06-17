@@ -24,8 +24,8 @@ public class AjudaProcessoCRUD {
                 + "values (?,?,?,?);";
         Connection conecta = ConectaMysql.getConexao();
         PreparedStatement stmt =conecta.prepareStatement(sql);
-        stmt.setInt(1, ajuda.getIdAjudado());
-        stmt.setInt(2, ajuda.getIdAjudante());
+        stmt.setString(1, ajuda.getIdAjudado());
+        stmt.setString(2, ajuda.getIdAjudante());
         stmt.setInt(3, ajuda.getIdAjuda());
         stmt.setString(4, ajuda.getStatus());
         stmt.execute();
@@ -53,8 +53,8 @@ public class AjudaProcessoCRUD {
         AjudaProcesso ajuda = new AjudaProcesso();
         while(rs.next()){
             ajuda.setIdAjuda(rs.getInt("idAjuda"));
-            ajuda.setIdAjudante(rs.getInt("idAjudante"));
-            ajuda.setIdAjudado(rs.getInt("idAjudado"));
+            ajuda.setIdAjudante(rs.getString("idAjudante"));
+            ajuda.setIdAjudado(rs.getString("idAjudado"));
             ajuda.setStatus(rs.getString("status"));
             ajuda.setId(rs.getInt("id"));
         }
@@ -77,8 +77,8 @@ public class AjudaProcessoCRUD {
        while(rs.next()){
            AjudaProcesso ajuda = new AjudaProcesso();
            ajuda.setIdAjuda(rs.getInt("idAjuda"));
-           ajuda.setIdAjudante(rs.getInt("idAjudante"));
-           ajuda.setIdAjudado(rs.getInt("idAjudado"));
+           ajuda.setIdAjudante(rs.getString("idAjudante"));
+           ajuda.setIdAjudado(rs.getString("idAjudado"));
            ajuda.setStatus(rs.getString("status"));
            ajuda.setId(rs.getInt("id"));
            ajudas.add(ajuda);
@@ -94,8 +94,8 @@ public class AjudaProcessoCRUD {
                 + "where id = ?";
         Connection conecta = ConectaMysql.getConexao();
         PreparedStatement stmt =conecta.prepareStatement(sql);
-        stmt.setInt(1, ajuda.getIdAjudado());
-        stmt.setInt(2, ajuda.getIdAjudante());
+        stmt.setString(1, ajuda.getIdAjudado());
+        stmt.setString(2, ajuda.getIdAjudante());
         stmt.setInt(3, ajuda.getIdAjuda());
         stmt.setString(4, ajuda.getStatus());
         stmt.setInt(5, ajuda.getId());
@@ -119,8 +119,8 @@ public class AjudaProcessoCRUD {
        while(rs.next()){
            AjudaProcesso ajuda = new AjudaProcesso();
            ajuda.setIdAjuda(rs.getInt("ap.idAjuda"));
-           ajuda.setIdAjudante(rs.getInt("ap.idAjudante"));
-           ajuda.setIdAjudado(rs.getInt("ap.idAjudado"));
+           ajuda.setIdAjudante(rs.getString("ap.idAjudante"));
+           ajuda.setIdAjudado(rs.getString("ap.idAjudado"));
            ajuda.setStatus(rs.getString("ap.status"));
            ajuda.setId(rs.getInt("ap.id"));           
            ajudas.add(ajuda);
@@ -145,8 +145,8 @@ public class AjudaProcessoCRUD {
        while(rs.next()){
            AjudaProcesso ajuda = new AjudaProcesso();
            ajuda.setIdAjuda(rs.getInt("ap.idAjuda"));
-           ajuda.setIdAjudante(rs.getInt("ap.idAjudante"));
-           ajuda.setIdAjudado(rs.getInt("ap.idAjudado"));
+           ajuda.setIdAjudante(rs.getString("ap.idAjudante"));
+           ajuda.setIdAjudado(rs.getString("ap.idAjudado"));
            ajuda.setStatus(rs.getString("ap.status"));
            ajuda.setId(rs.getInt("ap.id"));           
            ajudas.add(ajuda);

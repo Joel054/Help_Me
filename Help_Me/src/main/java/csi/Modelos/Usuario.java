@@ -14,7 +14,7 @@ import java.util.List;
  * @author Clecio
  */
 public class Usuario {
-    private int id = -1;
+    private String id = "-1";
     private String nome;
     private int idade;//não usado
     private int likes;
@@ -25,17 +25,13 @@ public class Usuario {
     public Usuario() {
     }
 
-    public Usuario(int id) throws Exception {
+    public Usuario(String id) throws Exception {
         setId(id);
     }
-
-    public Usuario(String linkFacebook) {
-        this.linkFacebook = linkFacebook;
-    }
     
     
 
-    public Usuario(int id, String nome, int idade, int likes, int deslikes, String linkFacebook) throws Exception {
+    public Usuario(String id, String nome, int idade, int likes, int deslikes, String linkFacebook) throws Exception {
         setId(id);
         this.nome = nome;
         this.idade = idade;
@@ -48,11 +44,11 @@ public class Usuario {
         setAjudas();
         setLocais();
     }
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) throws Exception {
+    public void setId(String id) throws Exception {
         this.id = id;
     }
 

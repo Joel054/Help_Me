@@ -27,10 +27,10 @@ public class FeedController {
     
     @RequestMapping("login")
     public ModelAndView login(String linkFacebook) throws Exception{
-            System.out.println("sdfsfsdfsdfsdfsdfsdfsdf");
         ModelAndView mv = null;
         UsuarioCRUD usuarioCrud = new UsuarioCRUD();
-        Usuario usuario = usuarioCrud.Autentica(linkFacebook);
+        Facebook facebook = usuarioCrud.call_me(linkFacebook);
+        Usuario usuario = usuarioCrud.Autentica(facebook.getId());
         if(usuario != null){
             System.out.println(""+usuario.getId()+"   linkface:  "+usuario.getLinkFacebook());
             mv = FuncoesUteis.GeraMVFeed(usuario.getId(), SetingValues.Requests.Feed.toString());
@@ -48,13 +48,16 @@ public class FeedController {
     public ModelAndView RegistrerUser(String linkFacebook) throws Exception{
         ModelAndView mv = null;
         UsuarioCRUD usuarioCrud = new UsuarioCRUD();
-        Usuario usuario = usuarioCrud.Autentica(linkFacebook);
+        Facebook facebook = usuarioCrud.call_me(linkFacebook);
+        Usuario usuario = usuarioCrud.Autentica(facebook.getId());
         if(usuario != null){
             mv  = new ModelAndView(SetingValues.Requests.Index.toString());
             mv.addObject("RegisterError", "Usuario ja existente");         
         }else{
             AjudaCRUD ajudaCrud = new AjudaCRUD();
-            usuario = new Usuario(linkFacebook);
+            usuario = new Usuario(facebook.getId());
+            usuario.setLinkFacebook(linkFacebook);
+            usuario.setNome(facebook.getNome());
             usuarioCrud.InsertUsuario(usuario);
             login(linkFacebook);
         }

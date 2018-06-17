@@ -45,7 +45,7 @@ public class FuncoesUteis {
                 ll.add(l2);
 	       GetDistancias(l1,ll);
     }
-    public static ModelAndView GeraMVFeed(int idUsuario, String view) throws Exception{
+    public static ModelAndView GeraMVFeed(String idUsuario, String view) throws Exception{
         ModelAndView mv = null;
         
         UsuarioCRUD usuarioCrud = new UsuarioCRUD();

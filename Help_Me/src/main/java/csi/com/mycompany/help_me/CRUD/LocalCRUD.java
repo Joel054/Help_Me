@@ -26,14 +26,14 @@ public class LocalCRUD {
         Local l = new Local(0,"casdaasdadsa","sasdasdasdm",-29.710731f, -53.712217f);
         try {
             LocalCRUD lc = new LocalCRUD();
-            lc.InsertLocal(l,1);
+            lc.InsertLocal(l,"a");
         } catch (Exception ex) {
             Logger.getLogger(LocalCRUD.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     public LocalCRUD() {
     }
-    public void InsertLocal(Local local,int idUsuario) throws Exception{
+    public void InsertLocal(Local local,String idUsuario) throws Exception{
         local.setCidade(FuncoesUteis.GetCidade(local.getLatitude(),local.getLongitude()));
         String sql = "SELECT insertLocal(?,?,?,?,?);";
         Connection conecta = ConectaMysql.getConexao();
@@ -42,7 +42,7 @@ public class LocalCRUD {
         stmt.setString(2, local.getCidade());
         stmt.setFloat(3, local.getLatitude());
         stmt.setFloat(4, local.getLongitude());
-        stmt.setFloat(5, idUsuario);
+        stmt.setString(5, idUsuario);
         stmt.execute();
         stmt.close();
         conecta.close();
@@ -121,15 +121,15 @@ public class LocalCRUD {
         conecta.close();
     }
 
-    public List<Local> ListaLocais(int idUsuario) throws Exception {
+    public List<Local> ListaLocais(String idUsuario) throws Exception {
            ArrayList<Local> locais = new ArrayList<>(); 
 
         // carregar o driver           
        // criar a declaracao (statement) sql
-       String sql = "select * from _local l inner join localUsuario lu on lu.idLocal = l.id inner join Usuario u on lu.idUsuario = u.id where u.id = ? ); ";
+       String sql = "select * from _local l inner join localUsuario lu on lu.idLocal = l.id inner join Usuario u on lu.idUsuario = u.id where u.id = ? ; ";
        Connection conecta = ConectaMysql.getConexao();
        PreparedStatement stmt =conecta.prepareStatement(sql);
-       stmt.setInt(1, idUsuario);
+       stmt.setString(1, idUsuario);
        // executar instrucao sql
        ResultSet rs = stmt.executeQuery();
        // manipular o resultado da instrucao sql

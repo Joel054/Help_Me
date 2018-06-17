@@ -18,7 +18,7 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class LocalController {
     @RequestMapping("newLocal")
-    public ModelAndView NewLocalUsuario(Local local,int idUsuario) throws Exception{
+    public ModelAndView NewLocalUsuario(Local local,String idUsuario) throws Exception{
         ModelAndView mv = null;
         LocalCRUD lc = new LocalCRUD();
         lc.InsertLocal(local,idUsuario);
@@ -28,7 +28,7 @@ public class LocalController {
     }
     
     @RequestMapping("updateLocal")
-    public ModelAndView UpdateLocal(Local local, int idUsuario) throws Exception{
+    public ModelAndView UpdateLocal(Local local, String idUsuario) throws Exception{
         ModelAndView mv = null;
         LocalCRUD lc = new LocalCRUD();
         lc.UpdateLocal(local);
@@ -37,7 +37,7 @@ public class LocalController {
     }
     
     @RequestMapping("deleteLocal")
-    public ModelAndView DeleteLocal(int idLocal, int idUsuario) throws Exception{
+    public ModelAndView DeleteLocal(int idLocal, String idUsuario) throws Exception{
         ModelAndView mv = null;
         LocalCRUD lc = new LocalCRUD();
         lc.DeleteLocal(idLocal);

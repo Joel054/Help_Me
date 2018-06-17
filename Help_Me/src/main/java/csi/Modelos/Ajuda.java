@@ -20,7 +20,7 @@ public class Ajuda {
     private int id;
     private String titulo;
     private String descricao;
-    private int idUsuario;
+    private String idUsuario;
     private int idLocal;
     private String tipo;
     private Local local;
@@ -33,7 +33,7 @@ public class Ajuda {
         setId(id);
     }
 
-    public Ajuda(int id, String titulo, String descricao, int idUsuario, int idLocal, String tipo) throws Exception {
+    public Ajuda(int id, String titulo, String descricao, String idUsuario, int idLocal, String tipo) throws Exception {
         setId(id);
         this.titulo = titulo;
         this.descricao = descricao;
@@ -86,11 +86,11 @@ public class Ajuda {
         local = lc.GetLocal(idLocal);
     }
 
-    public int getIdUsuario() {
+    public String getIdUsuario() {
         return idUsuario;
     }
 
-    public void setIdUsuario(int idUsuario) {
+    public void setIdUsuario(String idUsuario) {
         this.idUsuario = idUsuario;
     }
 

@@ -4,7 +4,7 @@ use Help_Me;
 
 
 create table Usuario(
-	id int primary key auto_increment,
+	id varchar(255) primary key,
     nome varchar(100),
     idade int,
     likes int,
@@ -25,7 +25,7 @@ create table Ajuda(
 	id int primary key auto_increment,
     titulo varchar(50),
     descricao varchar(255),
-    idUsuario int,
+    idUsuario varchar(255),
     idLocal int,
     tipo varchar(20),
     foreign key (idUsuario) references Usuario(id),
@@ -50,7 +50,6 @@ create table LocalUsuario(
     foreign key (idUsuario) references Usuario(id),
     foreign key (idLocal) references _Local(id)
 );
-drop function insertLocal;
  DELIMITER $
  CREATE FUNCTION insertLocal(nomeR char(50), cidadeR char(255), latitudeR float, longitudeR float, idUsuarioR int) RETURNS int
  BEGIN

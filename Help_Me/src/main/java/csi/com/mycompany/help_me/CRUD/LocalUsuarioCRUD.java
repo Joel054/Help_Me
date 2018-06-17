@@ -97,7 +97,7 @@ public class LocalUsuarioCRUD {
        ResultSet rs = stmt.executeQuery();
        // manipular o resultado da instrucao sql
        while(rs.next()){
-           int idUsuario = rs.getInt("idUsuario");
+           String idUsuario = rs.getString("idUsuario");
            UsuarioCRUD usuarioCRUD = new UsuarioCRUD();
            Usuario usuario =usuarioCRUD.GetUsuario(idUsuario);
            usuarios.add(usuario);
