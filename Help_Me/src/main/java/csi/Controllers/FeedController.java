@@ -44,7 +44,7 @@ public class FeedController {
     }
     
   
-    @RequestMapping("Registrar")
+    @RequestMapping("registrar")
     public ModelAndView RegistrerUser(String linkFacebook) throws Exception{
         ModelAndView mv = null;
         UsuarioCRUD usuarioCrud = new UsuarioCRUD();
@@ -59,7 +59,7 @@ public class FeedController {
             usuario.setLinkFacebook(linkFacebook);
             usuario.setNome(facebook.getNome());
             usuarioCrud.InsertUsuario(usuario);
-            login(linkFacebook);
+            mv = login(linkFacebook);
         }
         return mv;
     }
