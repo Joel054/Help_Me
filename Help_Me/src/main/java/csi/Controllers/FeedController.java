@@ -32,6 +32,8 @@ public class FeedController {
         Facebook facebook = usuarioCrud.call_me(linkFacebook);
         Usuario usuario = usuarioCrud.Autentica(facebook.getId());
         if(usuario != null){
+            usuario.setLinkFacebook(linkFacebook);
+            usuarioCrud.UpdateUsuario(usuario);
             System.out.println(""+usuario.getId()+"   linkface:  "+usuario.getLinkFacebook());
             mv = FuncoesUteis.GeraMVFeed(usuario.getId(), SetingValues.Requests.Feed.toString());
            // mv.addObject("offset",SetingValues.getBuffingFeed());

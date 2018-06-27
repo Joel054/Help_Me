@@ -14,6 +14,7 @@ import java.util.Map;
  */
 public class SetingValues {
     public enum StatusAjuda{Iniciado, EmProcesso, Finalizado, Cancelado, AvaliadoPorAjudante, AvaliadoPorAjudado, AvaliadoAll}
+    public enum TipoAjuda{pedidoDeAjuda, OferecendoAjuda}
     public static String keyCodeGoogleApis ="AIzaSyB8S-wCG4Adqc2pRqeIYr-CyH6Mual8mZk";
     public enum Requests{
         Feed{

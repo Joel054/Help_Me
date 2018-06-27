@@ -6,6 +6,7 @@
 package csi.Modelos;
 
 import csi.com.mycompany.help_me.CRUD.AjudaProcessoCRUD;
+import csi.Controllers.SetingValues.TipoAjuda;
 import csi.com.mycompany.help_me.CRUD.LocalCRUD;
 import csi.com.mycompany.help_me.CRUD.UsuarioCRUD;
 import java.util.List;
@@ -22,7 +23,7 @@ public class Ajuda {
     private String descricao;
     private String idUsuario;
     private int idLocal;
-    private String tipo;
+    private TipoAjuda tipo;
     private Local local;
     private Local localProximo;
     private List<AjudaProcesso> emProcesso;
@@ -39,15 +40,22 @@ public class Ajuda {
         this.descricao = descricao;
         this.idUsuario = idUsuario;
         setIdLocal(idLocal);
-        this.tipo = tipo;
+        this.tipo = TipoAjuda.valueOf(tipo);
     }
 
     public String getTipo() {
+        return tipo.toString();
+    }
+    public TipoAjuda getTipoEnum(){
         return tipo;
     }
-
-    public void setTipo(String tipo) {
+    
+    public void setTipoEnum(TipoAjuda tipo){
         this.tipo = tipo;
+    }
+    
+    public void setTipo(String tipo) {
+        this.tipo = TipoAjuda.valueOf(tipo);
     }
 
     public int getId() {

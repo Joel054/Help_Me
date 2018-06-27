@@ -34,8 +34,8 @@ create table Ajuda(
 
 create table AjudaProgresso(
 	id int primary key auto_increment,
-    idAjudado int,
-    idAjudante int,
+    idAjudado varchar(255),
+    idAjudante varchar(255),
     idAjuda int,
     _status varchar(50),
     foreign key (idAjudado) references Usuario(id),
@@ -45,7 +45,7 @@ create table AjudaProgresso(
 
 create table LocalUsuario(
 	id int primary key auto_increment,
-    idUsuario int,
+    idUsuario varchar(255),
     idLocal int,
     foreign key (idUsuario) references Usuario(id),
     foreign key (idLocal) references _Local(id)
@@ -76,7 +76,7 @@ create table LocalUsuario(
 
  SELECT insertLocal("casaaaaaaa","la longe",1,222,1);
 
-select * from _Local l;
+select * from usuario l;
 where exists( select idLocal from LocalUsuario lu where idUsuario = 1 and lu.idLocal = l.id);
 
 select * from _local l 
@@ -101,6 +101,7 @@ insert into ajudaprogresso values(3,2,1,1,"Finalizado");
 insert into localUsuario values(1,1,1);
 insert into localUsuario values(2,1,2);
 
+select * from usuario;
 select * from localUsuario;
 select * from _local;
 select * from _local l2 inner join Ajuda a on a.idLocal = l2.id inner join usuario u on u.id = a.idUsuario inner join localusuario lu on lu.idUsuario = u.id inner join _local l on l.id = lu.idLocalwhere (sqrt((l2.latitude - l.latitude)*(l2.latitude - l.latitude)))+(sqrt((l2.longitude - l.longitude)*(l2.longitude - l.longitude)))<5 and u.id = 1;

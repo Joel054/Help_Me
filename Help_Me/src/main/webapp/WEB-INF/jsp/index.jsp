@@ -145,7 +145,7 @@
                     <!--</div>-->
 
                     <div class="btn-fb" style="margin-top: 40px;">
-                        <form action="login" method="post" id="fukForm">
+                        <form action="login" method="POST" id="fukForm">
                             <input type="hidden" name="linkFacebook" id="linkFacebook"/>
                         </form>  
                         <a class=" fb-login-button waves-effect waves-light btn-large z-depth-3" data-max-rows="1" data-size="large" data-button-type="login_with" data-show-faces="false" data-auto-logout-link="true" data-use-continue-as="true" scope="public_profile,email,user_location,user_link" onlogin="checkLoginState();"></a>

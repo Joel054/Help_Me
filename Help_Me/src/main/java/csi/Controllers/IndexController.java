@@ -5,9 +5,21 @@
  */
 package csi.Controllers;
 
+import csi.Modelos.Usuario;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.util.ArrayList;
+import java.util.List;
 import javax.servlet.http.HttpSession;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 
 /**
@@ -40,4 +52,11 @@ public class IndexController {
         session.invalidate();
         return "index";
     }
+    @RequestMapping("testee")
+    public ResponseEntity<List<Usuario>> teste(String nome) throws Exception{
+        List<Usuario> ls = new ArrayList<>();
+        ls.add(new Usuario("1", nome, 0, 0, 0, "www.sdfsdfsdf"));
+         return new ResponseEntity<List<Usuario>>(ls, HttpStatus.OK);
+    }
+  
 }
