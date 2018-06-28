@@ -3,17 +3,14 @@ body{
     font-family: moon;
     /*height: 100%;*/
 }
-
 @font-face {
     font-family: moon;
     src: url('fonts/Moon Light.ttf');
 }
-
 @font-face{
     font-family: moon bold;
     src: url('fonts/Moon Bold.ttf');
 }
-
 .wrapper {
     height: 100%;
     min-height: 100%;
@@ -48,4 +45,10 @@ footer{
 }
 .light-red{
     background-color: #fd314d !important;
+}
+.text-orange{
+    color: #ff9800 !important;
+}
+.rosa{
+    background-color: #fd314d;
 }
