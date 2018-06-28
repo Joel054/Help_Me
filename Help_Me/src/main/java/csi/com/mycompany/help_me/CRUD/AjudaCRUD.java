@@ -29,7 +29,7 @@ public class AjudaCRUD {
         //ac.ListaAjudas(loc,2,2,2);
     }
     public void InsertAjuda(Ajuda ajuda) throws Exception{
-        String sql = "insert into Ajuda(titulo,descricao,idUsuario,udLocal,tipo)"
+        String sql = "insert into Ajuda(titulo,descricao,idUsuario,idLocal,tipo)"
                 + "values (?,?,?,?,?);";
         Connection conecta = ConectaMysql.getConexao();
         PreparedStatement stmt =conecta.prepareStatement(sql);
@@ -38,6 +38,7 @@ public class AjudaCRUD {
         stmt.setString(3, ajuda.getIdUsuario());
         stmt.setInt(4, ajuda.getIdLocal());
         stmt.setString(5, ajuda.getTipo());
+        System.out.println("aqui: "+ajuda.getTitulo()+" "+ajuda.getIdUsuario()+" "+ajuda.getIdLocal()+" "+ajuda.getTipo());
         stmt.execute();
         stmt.close();
         conecta.close();

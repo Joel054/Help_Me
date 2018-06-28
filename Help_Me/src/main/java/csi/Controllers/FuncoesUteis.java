@@ -52,14 +52,18 @@ public class FuncoesUteis {
         Usuario usuario = usuarioCrud.GetUsuario(idUsuario);
         usuario.setPerfilAll();
         AjudaCRUD ajudaCrud = new AjudaCRUD();
+        LocalCRUD locaisCrud = new LocalCRUD();
+        
         Facebook facebook = usuarioCrud.call_me(usuario.getLinkFacebook());
         List<Ajuda> ajudasFeed = ajudaCrud.ListaAjudasFeed(usuario.getId());
+
         try{
             
             mv  = new ModelAndView(view);
             mv.addObject("UsuarioLogado", usuario);
             mv.addObject("ajudasFeed", ajudasFeed);
             mv.addObject("facebook", facebook);
+
             
         } catch (Exception ex) {
             Logger.getLogger(FuncoesUteis.class.getName()).log(Level.SEVERE, null, ex);

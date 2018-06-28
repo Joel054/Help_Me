@@ -22,6 +22,7 @@ public class Ajuda {
     private String titulo;
     private String descricao;
     private String idUsuario;
+    private Usuario usuario;
     private int idLocal;
     private TipoAjuda tipo;
     private Local local;
@@ -41,6 +42,8 @@ public class Ajuda {
         this.idUsuario = idUsuario;
         setIdLocal(idLocal);
         this.tipo = TipoAjuda.valueOf(tipo);
+        UsuarioCRUD uc = new UsuarioCRUD();
+        usuario=uc.GetUsuario(idUsuario);
     }
 
     public String getTipo() {
@@ -100,6 +103,12 @@ public class Ajuda {
 
     public void setIdUsuario(String idUsuario) {
         this.idUsuario = idUsuario;
+        UsuarioCRUD uc = new UsuarioCRUD();
+        try {
+            usuario=uc.GetUsuario(idUsuario);
+        } catch (Exception ex) {
+            Logger.getLogger(Ajuda.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     public Local getLocal() {
@@ -124,6 +133,14 @@ public class Ajuda {
 
     public void setLocalProximo(Local localProximo) {
         this.localProximo = localProximo;
+    }
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
     }
     
 }

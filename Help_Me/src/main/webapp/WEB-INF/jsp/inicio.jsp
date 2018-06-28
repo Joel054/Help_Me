@@ -6,6 +6,7 @@
 
 <%@page import="csi.Modelos.Facebook"%>
 <%@page import="csi.com.mycompany.help_me.CRUD.UsuarioCRUD"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <head>
@@ -31,6 +32,11 @@
       js.src = 'https://connect.facebook.net/pt_BR/sdk.js#xfbml=1&version=v3.0&appId=197552614211211&autoLogAppEvents=1';
       fjs.parentNode.insertBefore(js, fjs);
     }(document, 'script', 'facebook-jssdk'));</script>
+    <script type="text/javascript">
+  window.onload = function(){
+  getLocation();
+}
+</script>
 
 <body>
 <!--  menu responsivo -->
@@ -45,9 +51,9 @@
             <a class="dropdown-trigger black-text" href="#" style="font-family: moon;" data-target="dropdown">Camobi<i
                     class="material-icons right black-text">expand_more</i></a>
             <ul id="dropdown" class="dropdown-content" style="font-family: moon;">
-                <li><a href="#" class="black-text">teste</a></li>
-                <li><a href="#" class="black-text">teste</a></li>
-                <li><a href="#" class="black-text">teste</a></li>
+                <c:forEach var="locais" items="${UsuarioLogado.locais}"> 
+                    <li><a href="#!" class="black-text">${locais.nome}</a></li>
+                </c:forEach>
             </ul>
         </div>
         <!--menu: inicio, historico-->
@@ -108,10 +114,7 @@
         <i class="large material-icons">add_location</i>
     </a>
 </div>
-    <div class="card">
-        <h1>Olá</h1>
-        Nome: ${facebook.nome}
-    </div>
+
 <main>
     
     <!--busca-->
@@ -129,47 +132,91 @@
         </div>
     </div>
     <!--end busca-->
-    <!--card de ajuda-->
-    <div class="container">
-        <div class="col s12 m12">
-            <div class="card darken-1 white">
-                <div class="card-content black-text">
-                    <div class="cabecalho-card">
-                        <div class="row">
-                            <div class="col s12 m4">
-                                <div class="row">
-                                    <div class="col s6 m3">
-                                        <img class="circle" height="60px" width="60px" src="img/1.jpg">
-                                    </div>
-                                    <div class="col s6 m9 m-t-20">
-                                        <h6>NOME</h6>
+    
+    <c:forEach var="ajudas" items="${ajudasFeed}"> 
+        <c:choose>
+            <c:when test="${ajudas.tipo == 'OferecendoAjuda'}">
+                <!--card de ajuda-->
+                <div class="container">
+                    <div class="col s12 m12">
+                        <div class="card darken-1 white">
+                            <div class="card-content black-text">
+                                <div class="cabecalho-card">
+                                    <div class="row">
+                                        <div class="col s12 m4">
+                                            <div class="row">
+                                                <div class="col s6 m3">
+                                                    <img src="${facebook.foto}" class="circle" height="60px" width="60px" src="img/1.jpg">
+                                                </div>
+                                                <div class="col s6 m9 m-t-20">
+                                                    <h6>${ajudas.usuario.nome}</h6>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col s12 m4 center m-t-20">
+                                            <h5>${ajudas.tipo}</h5>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="col s12 m4 center m-t-20">
-                                <h5>ATIVO 20%</h5>
-                            </div>
-                            <div class="col s12 m4 m-t-20 center">
-                                <h6>08/05/2018 15:00</h6>
+                                <div class="container card-description">
+                                    <p>${ajudas.titulo}</p>
+                                    <p>${ajudas.descricao}</p>
+
+                                    <p style="margin: 20px; font-size: 14px">${ajudas.local.nome}</p>
+                                </div>
+                                <div class="card-action">
+                                    <div class="center">
+                                        <a href="#" class="btn btn-large orange" style="width: 80%">Ajudar</a>
+                                    </div>
+                                </div>
+
                             </div>
                         </div>
                     </div>
-                    <div class="container card-description">
-                        <p>Lorem ipsum aosiudhj aisu Lorem ipsum aos iudhj ais uLorem ipsum aosi udhj aisuL orem ipsum
-                            aos udhj aisu hasoduifh aosiudfh uisdfh </p>
-
-                        <p style="margin: 20px; font-size: 14px">localidade</p>
-                    </div>
-                    <div class="card-action">
-                        <div class="center">
-                            <a href="#" class="btn btn-large orange" style="width: 80%">Ajudar</a>
-                        </div>
-                    </div>
-
                 </div>
-            </div>
-        </div>
-    </div>
+            </c:when>
+            <c:otherwise>
+            <!--card de ajuda-->
+                <div class="container">
+                    <div class="col s12 m12">
+                        <div class="card darken-1 white">
+                            <div class="card-content black-text">
+                                <div class="cabecalho-card">
+                                    <div class="row">
+                                        <div class="col s12 m4">
+                                            <div class="row">
+                                                <div class="col s6 m3">
+                                                    <img src="${facebook.foto}" class="circle" height="60px" width="60px" src="img/1.jpg">
+                                                </div>
+                                                <div class="col s6 m9 m-t-20">
+                                                    <h6>${ajudas.usuario.nome}</h6>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col s12 m4 center m-t-20">
+                                            <h5>${ajudas.tipo}</h5>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="container card-description">
+                                    <p>${ajudas.titulo}</p>
+                                    <p>${ajudas.descricao}</p>
+                                    <p style="margin: 20px; font-size: 14px">${ajudas.local.nome}</p>
+                                </div>
+                                <div class="card-action">
+                                    <div class="center">
+                                        <a href="#" class="btn btn-large black" style="width: 80%">Pedir Ajuda</a>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </c:otherwise>
+                
+        </c:choose>
+    </c:forEach>
     <!--end card ajuda-->
     <!--card detalhes da ajuda-->
     <div class="container">
@@ -258,72 +305,82 @@
     </div>
     <!--End Card solicitação pedido-->
     <!--<!-- Modal Pedir/oferecer ajuda -->-->
-    <form action="#">
+    <form action="newAjuda" method="post">
         <div id="modal1" class="modal modal-fixed-footer">
             <div class="modal-content center">
-                    <p>
-                        <label>
-                            <input name="group1" type="radio" checked/>
-                            <span>Oferecer Ajuda</span>
-                        </label>
-                    </p>
-                    <p>
-                        <label>
-                            <input name="group1" type="radio"/>
-                            <span>Pedir ajuda</span>
-                        </label>
-                    </p>
                     <div class="container">
                         <div class="row">
                             <div class="col s12">
                                 <div class="row">
+                                    <div class="input-field col s12" >
+                                      <select id="tipo" name="tipo">
+                                          <option value="OferecendoAjuda">Oferecer Ajuda</option>
+                                          <option value="pedidoDeAjuda">Pedir ajuda</option>
+                                      </select>
+                                      <label for="textarea1">Selecione o tipo de ajuda</label>
+                                    </div>
+                                </div>
+                                <div class="row">
                                     <div class="input-field col s12">
-                                        <textarea id="textarea1" class="materialize-textarea"></textarea>
+                                        <textarea id="textarea1" class="materialize-textarea" id="titulo" name="titulo"></textarea>
+                                        <label for="textarea1">Titulo</label>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="input-field col s12">
+                                        <textarea id="textarea1" class="materialize-textarea" id="descricao" name="descricao"></textarea>
                                         <label for="textarea1">Descricao</label>
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col s6 m6">
-                                        Dia:<input type="date" name="day">
+                                    <div class="input-field col s12" >
+                                      <select id="idLocal" name="idLocal">
+                                        <c:forEach var="locais" items="${UsuarioLogado.locais}"> 
+                                            <option value="${locais.id}">${locais.nome}</option>
+                                        </c:forEach>
+                                      </select>
+                                      <label for="textarea1">Selecione o local</label>
                                     </div>
-                                    <div class="col s6 m6">
-                                        Hora:<input id="time" type="time">
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col s12">
-                                        Local: <a class="dropdown-trigger black-text" href="#"
-                                                        style="font-family: moon;" data-target="dropdown4">Camobi<i
-                                            class="material-icons black-text">expand_more</i></a>
-                                        <ul id="dropdown4" class="dropdown-content" style="font-family: moon;">
-                                            <li><a href="#" class="black-text">teste</a></li>
-                                        </ul>
-                                    </div>
+                                    <input type="hidden" name="idUsuario" id="idUsuario" value="${facebook.id}"/>
                                 </div>
                             </div>
                         </div>
+                    
                     </div>
-
             </div>
             <div class="modal-footer">
                 <a href="#!" class="modal-close waves-effect waves-green btn-flat left grey">Fechar</a>
-                <a href="#!" class="modal-close waves-effect waves-green btn-flat right orange" type="submit">Confirmar</a>
+                <button class="modal-close waves-effect waves-green btn-flat right orange" type="submit">Confirmar</button>
             </div>
         </div>
     </form>
     <!--end-MODAL-->  
     <!-- Modal Cadastrar novo local -->
     <div id="modal-novolocal" class="modal modal-fixed-footer">
-        <form action="#">
-                <div class="modal-content center">
+        <form action="newLocal" method="post">
+            <div class="modal-content center">
               <h4>Cadastrar novo Local</h4>
               <p>A bunch of text</p>
             </div>
+            
+            <div class="row">
+                <p id="demo"></p>
+                <div id="map" style="width:50%;height:50%;"></div>          
+            </div>
+            <div class="input-field col s12">
+
+                <textarea id="textarea1" class="materialize-textarea" id="nome" name="nome"></textarea>
+                <label for="textarea1">Dê um nome para seu local</label>
+                <input type="hidden" name="idUsuario" id="idUsuario" value="${facebook.id}"/>
+                <input type="hidden" name="latitude" id="latitude"/>
+                <input type="hidden" name="longitude" id="longitude"/>
+            </div>
             <div class="modal-footer">
-              <a href="#!" class="modal-close waves-effect waves-green btn-flat">Concluir</a>
+              <button type="submit"  class="modal-close waves-effect waves-green btn-flat">Concluir</button>
             </div>
         </form>
     </div>
+    
     <!-- Modal Busca-->
      <div id="modal-busca" class="modal bottom-sheet">
     <div class="modal-content">
@@ -379,10 +436,61 @@
     $(document).ready(function(){
         $('.tooltipped').tooltip();
     });
+    
+    // select
+    $(document).ready(function(){
+    $('select').formSelect();
+  });
 
 
 
 </script>
+
+<script>
+var x = document.getElementById("demo");
+
+function getLocation() {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(myMap);
+        navigator.geolocation.getCurrentPosition(showPosition);
+    } else { 
+        x.innerHTML = "Geolocation is not supported by this browser.";
+    }
+}
+
+function showPosition(position) {
+    x.innerHTML = "Latitude: " + position.coords.latitude + 
+    "<br>Longitude: " + position.coords.longitude;
+    document.getElementById('latitude').value = ""+position.coords.latitude;
+    document.getElementById('longitude').value = ""+position.coords.longitude;
+}
+
+function myMap(position) {
+  var mapCanvas = document.getElementById("map");
+  var myCenter=new google.maps.LatLng(position.coords.latitude,position.coords.longitude);
+  var mapOptions = {center: myCenter, zoom: 16};
+  var marker = new google.maps.Marker({position:myCenter});
+  var map = new google.maps.Map(mapCanvas, mapOptions);
+  marker.setMap(map);
+  google.maps.event.addListener(map, 'click', function(event) {
+      // ------------------------- possivel implementacao para marcar ponto no mapa
+    //placeMarker(map, event.latLng);
+  });
+}
+
+function placeMarker(map, location) {
+  var marker = new google.maps.Marker({
+    position: location,
+    map: map
+  });
+  var infowindow = new google.maps.InfoWindow({
+    content: 'Latitude: ' + location.lat() + '<br>Longitude: ' + location.lng()
+  });
+  infowindow.open(map,marker);
+}
+</script>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCmGfRWwdWoZ60npIg3nzj92UOdeBCG_sY&callback=myMap"></script>
 
 </body>
 </html>
