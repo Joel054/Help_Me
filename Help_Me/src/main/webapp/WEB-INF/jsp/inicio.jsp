@@ -1,5 +1,5 @@
 <%-- 
-    Document   : Cadastro
+    Document   : Cadastro 
     Created on : 15/06/2018, 21:33:11
     Author     : vitor
 --%>
@@ -135,7 +135,7 @@
     
     <c:forEach var="ajudas" items="${ajudasFeed}"> 
         <c:choose>
-            <c:when test="${ajudas.tipo == 'OferecendoAjuda'}">
+            <c:when test="${ajudas.tipo != 'OferecendoAjuda'}">
                 <!--card de ajuda-->
                 <div class="container">
                     <div class="col s12 m12">
@@ -161,12 +161,19 @@
                                 <div class="container card-description">
                                     <p>${ajudas.titulo}</p>
                                     <p>${ajudas.descricao}</p>
-
                                     <p style="margin: 20px; font-size: 14px">${ajudas.local.nome}</p>
                                 </div>
                                 <div class="card-action">
                                     <div class="center">
-                                        <a href="#" class="btn btn-large orange" style="width: 80%">Ajudar</a>
+                                        <form action="newAjudaEmProcesso" method="post"> 
+                                            <input type="hidden" name="idAjudado" value="${ajudas.usuario.id}">
+                                            <input type="hidden" name="idAjudante" value="${UsuarioLogado.id}"/>
+                                            <input type="hidden" name="idAjuda" value="${ajudas.id}"/>
+                                            <input type="hidden" name="status" value="Iniciado"/>
+                                            <input type="hidden" name="idUsuario" value="${UsuarioLogado.id}"/>  
+                                            
+                                            <button type="submit" class="btn btn-large orange" style="width: 80%">Ajudar</button>
+                                        </form>
                                     </div>
                                 </div>
 
@@ -205,7 +212,7 @@
                                 </div>
                                 <div class="card-action">
                                     <div class="center">
-                                        <a href="#" class="btn btn-large black" style="width: 80%">Pedir Ajuda</a>
+                                        <a href="#" class="btn btn-large deep-orange" style="width: 80%">Pedir Ajuda</a>
                                     </div>
                                 </div>
 
@@ -214,7 +221,6 @@
                     </div>
                 </div>
             </c:otherwise>
-                
         </c:choose>
     </c:forEach>
     <!--end card ajuda-->
@@ -369,7 +375,7 @@
             </div>
             <div class="input-field col s12">
 
-                <textarea id="textarea1" class="materialize-textarea" id="nome" name="nome"></textarea>
+                <textarea id="textarea1" class="materialize-textarea" id="nome" name="nome" required></textarea>
                 <label for="textarea1">Dê um nome para seu local</label>
                 <input type="hidden" name="idUsuario" id="idUsuario" value="${facebook.id}"/>
                 <input type="hidden" name="latitude" id="latitude"/>
@@ -398,7 +404,45 @@
         </nav>
     </div>
   </div>
+    
+
+    <form action="#" method="post">
+        <div id="modal-solicitarAjudar" class="modal modal-fixed-footer">
+            <div class="modal-content center">
+                <div class="container">
+                    <div class="row">
+                        <div class="col s12">
+                            <div class="row">
+                                <div class="col s12 m4">
+                                    <div class="row">
+                                        <div class="col s6 m3">
+                                            <img class="circle" height="60px" width="60px" src="img/1.jpg">
+                                        </div>
+                                        <div class="col s6 m9 m-t-20">
+                                            <h6>NOME</h6>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div> 
+                        </div>                        
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12" >
+                            <h1>${ajudas.titulo}</h1>
+                            <p>Lorem ipsum aosiudhj aisu Lorem ipsum aos iudhj ais uLorem ipsum aosi udhj aisuL orem ipsum
+                                aos udhj aisu hasoduifh aosiudfh uisdfh </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <a href="#!" class="modal-close waves-effect waves-green btn-flat left grey">Fechar</a>
+                <button class="modal-close waves-effect waves-green btn-flat right orange" type="submit">Confirmar</button>
+            </div>
+        </div>
+    </form>
           
+      
 
 </main>
 <!--logo, icone -->

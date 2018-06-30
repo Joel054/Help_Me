@@ -20,7 +20,7 @@ import java.util.List;
  */
 public class AjudaProcessoCRUD {
     public void InsertAjudaProcesso(AjudaProcesso ajuda) throws Exception{
-        String sql = "insert into AjudaProcesso(idAjudado,idAjudante,idAjuda,status)"
+        String sql = "insert into AjudaProcesso(idAjudado,idAjudante,idAjuda,_status)"
                 + "values (?,?,?,?);";
         Connection conecta = ConectaMysql.getConexao();
         PreparedStatement stmt =conecta.prepareStatement(sql);
@@ -55,7 +55,7 @@ public class AjudaProcessoCRUD {
             ajuda.setIdAjuda(rs.getInt("idAjuda"));
             ajuda.setIdAjudante(rs.getString("idAjudante"));
             ajuda.setIdAjudado(rs.getString("idAjudado"));
-            ajuda.setStatus(rs.getString("status"));
+            ajuda.setStatus(rs.getString("_status"));
             ajuda.setId(rs.getInt("id"));
         }
         stmt.close();
@@ -79,7 +79,7 @@ public class AjudaProcessoCRUD {
            ajuda.setIdAjuda(rs.getInt("idAjuda"));
            ajuda.setIdAjudante(rs.getString("idAjudante"));
            ajuda.setIdAjudado(rs.getString("idAjudado"));
-           ajuda.setStatus(rs.getString("status"));
+           ajuda.setStatus(rs.getString("_status"));
            ajuda.setId(rs.getInt("id"));
            ajudas.add(ajuda);
        }
@@ -90,7 +90,7 @@ public class AjudaProcessoCRUD {
     }
     
     public void UpdateAjudaProcesso(AjudaProcesso ajuda) throws Exception{
-        String sql = "update AjudaProcesso set idAjudado =?, idAjudante =?, idAjuda =?, status =?"
+        String sql = "update AjudaProcesso set idAjudado =?, idAjudante =?, idAjuda =?, _status =?"
                 + "where id = ?";
         Connection conecta = ConectaMysql.getConexao();
         PreparedStatement stmt =conecta.prepareStatement(sql);
@@ -108,7 +108,7 @@ public class AjudaProcessoCRUD {
         
         // carregar o driver           
        // criar a declaracao (statement) sql
-       String sql = "select * from AjudaProgresso ap where idAjudado = ? or idAjudante = ?;";
+       String sql = "select * from AjudaProcesso ap where idAjudado = ? or idAjudante = ?;";
        Connection conecta = ConectaMysql.getConexao();
        PreparedStatement stmt =conecta.prepareStatement(sql);
        stmt.setInt(1, idUsuario);
@@ -121,7 +121,7 @@ public class AjudaProcessoCRUD {
            ajuda.setIdAjuda(rs.getInt("ap.idAjuda"));
            ajuda.setIdAjudante(rs.getString("ap.idAjudante"));
            ajuda.setIdAjudado(rs.getString("ap.idAjudado"));
-           ajuda.setStatus(rs.getString("ap.status"));
+           ajuda.setStatus(rs.getString("ap._status"));
            ajuda.setId(rs.getInt("ap.id"));           
            ajudas.add(ajuda);
        }
@@ -135,7 +135,7 @@ public class AjudaProcessoCRUD {
         
         // carregar o driver           
        // criar a declaracao (statement) sql
-       String sql = "select * from AjudaProgresso ap where "+campo+" = ?;";
+       String sql = "select * from AjudaProcesso ap where "+campo+" = ?;";
        Connection conecta = ConectaMysql.getConexao();
        PreparedStatement stmt =conecta.prepareStatement(sql);
        stmt.setInt(1, id);
@@ -147,7 +147,7 @@ public class AjudaProcessoCRUD {
            ajuda.setIdAjuda(rs.getInt("ap.idAjuda"));
            ajuda.setIdAjudante(rs.getString("ap.idAjudante"));
            ajuda.setIdAjudado(rs.getString("ap.idAjudado"));
-           ajuda.setStatus(rs.getString("ap.status"));
+           ajuda.setStatus(rs.getString("ap._status"));
            ajuda.setId(rs.getInt("ap.id"));           
            ajudas.add(ajuda);
        }

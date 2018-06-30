@@ -7,6 +7,7 @@ package csi.Controllers;
 
 import csi.Modelos.AjudaProcesso;
 import csi.com.mycompany.help_me.CRUD.AjudaProcessoCRUD;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -14,7 +15,7 @@ import org.springframework.web.servlet.ModelAndView;
  *
  * @author Clecio
  */
-@RequestMapping("updateLocal")
+@Controller
 public class AjudaEmProcessoController {
     
     @RequestMapping("newAjudaEmProcesso")
