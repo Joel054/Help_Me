@@ -32,7 +32,7 @@ public class SetingValues {
         ,Perfil_Logged_User{
             @Override
             public String toString(){
-                return ("/PerfilLoggedUser.jsp");
+                return ("perfil");
             }
         },Perfil_Oter_User{
             @Override
