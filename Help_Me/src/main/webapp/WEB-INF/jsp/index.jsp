@@ -139,25 +139,42 @@
                 <div>
 
                     <img src="img/logo-nova-texto.png" style="height: 126px; width: 262px; margin-top: 10px;"><br>
-                    <!--<div style="margin-top: 15px;">-->
-                        <!--<span style="font: 20px moon bold; " class="flow-text">Ajude alguem!<br>De um HELP!</span>-->
-
-                    <!--</div>-->
-
                     <div class="btn-fb" style="margin-top: 40px;">
                         <form action="login" method="POST" id="fukForm">
                             <input type="hidden" name="linkFacebook" id="linkFacebook"/>
                         </form>  
-                        <a class=" fb-login-button waves-effect waves-light btn-large z-depth-3" data-max-rows="1" data-size="large" data-button-type="login_with" data-show-faces="false" data-auto-logout-link="true" data-use-continue-as="true" scope="public_profile,email,user_location,user_link" onlogin="checkLoginState();"></a>
-                        
-                        <a class="fb-login-button waves-effect waves-light btn-large z-depth-3" data-max-rows="1" data-size="large" data-button-type="login_with" data-show-faces="false" data-auto-logout-link="true" data-use-continue-as="true" scope="public_profile,email,user_location,user_link" onlogin="checkLoginStateReg();">registr-se</a>
-                        
+                                                
                     </div>
-                    
+
+                     <!-- Modal Trigger -->
+                    <a class="waves-effect waves-light btn modal-trigger deep-orange" href="#login">Entrar</a>
+                    <a class="waves-effect waves-light btn modal-trigger orange" href="#cadastro">Cadastrar-se</a>
+  
+                    <!-- Modal Structure -->
+                    <div id="login" class="modal">
+                        <div class="modal-content">
+                            <h4>Fazer Login</h4>
+                            <p>Entre com o Facebook:</p>
+                            <a class=" fb-login-button z-depth-3" data-max-rows="1" data-size="large" data-button-type="login_with" data-show-faces="false" data-auto-logout-link="true" data-use-continue-as="true" scope="public_profile,email,user_location,user_link" onlogin="checkLoginState();"></a>
+                        </div>
+                        <div class="modal-footer center">
+                            <a class="modal-close waves-effect waves-green btn-flat text-orange">Fechar</a>
+                        </div>
+                    </div>
+                    <div id="cadastro" class="modal">
+                        <div class="modal-content">
+                            <h4>Cadastrar-se</h4>
+                            <p>Entre com o Facebook:</p>
+                            <a class=" fb-login-button z-depth-3" data-max-rows="1" data-size="large" data-button-type="login_with" data-show-faces="false" data-auto-logout-link="true" data-use-continue-as="true" scope="public_profile,email,user_location,user_link" onlogin="checkLoginState();"></a>
+                        </div>
+                        <div class="modal-footer center">
+                            <a class="modal-close waves-effect waves-green btn-flat text-orange">Fechar</a>
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </div>
-    </div>
+                      </div>
+                  </div>
+              </div>
 
     <div class="container">
         <div class="row"><img src="img/abelha-voando.png" alt="" style="height: 100%; width: 100%; margin-top: 40px;""></div>
@@ -187,6 +204,16 @@
         $(document).ready(function () {
             $('.sidenav').sidenav();
         });
+        $(document).ready(function(){
+            $('.modal').modal();
+        });
+        $('.btn-botao').on('click', function(){
+            $('#cadastro').modal();
+        });
+        $('.btn-new').on('click', function(){
+            $('#login').modal();
+        });
+        
     </script>
 </body>
 </html>
