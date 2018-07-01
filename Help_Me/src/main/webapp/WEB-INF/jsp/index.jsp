@@ -155,7 +155,7 @@
                         <div class="modal-content">
                             <h4>Fazer Login</h4>
                             <p>Entre com o Facebook:</p>
-                            <a class=" fb-login-button z-depth-3" data-max-rows="1" data-size="large" data-button-type="login_with" data-show-faces="false" data-auto-logout-link="true" data-use-continue-as="true" scope="public_profile,email,user_location,user_link" onlogin="checkLoginState();"></a>
+                            <a class=" fb-login-button z-depth-3" data-max-rows="1" data-size="large" data-button-type="login_with" data-show-faces="false" data-auto-logout-link="true" data-use-continue-as="true" scope="public_profile,email,user_location,user_link,user_birthday" onlogin="checkLoginState();"></a>
                         </div>
                         <div class="modal-footer center">
                             <a class="modal-close waves-effect waves-green btn-flat text-orange">Fechar</a>
@@ -165,7 +165,7 @@
                         <div class="modal-content">
                             <h4>Cadastrar-se</h4>
                             <p>Entre com o Facebook:</p>
-                            <a class=" fb-login-button z-depth-3" data-max-rows="1" data-size="large" data-button-type="login_with" data-show-faces="false" data-auto-logout-link="true" data-use-continue-as="true" scope="public_profile,email,user_location,user_link" onlogin="checkLoginState();"></a>
+                            <a class=" fb-login-button z-depth-3" data-max-rows="1" data-size="large" data-button-type="login_with" data-show-faces="false" data-auto-logout-link="true" data-use-continue-as="true" scope="public_profile,email,user_location,user_link,user_birthday" onlogin="checkLoginStateReg();"></a>
                         </div>
                         <div class="modal-footer center">
                             <a class="modal-close waves-effect waves-green btn-flat text-orange">Fechar</a>

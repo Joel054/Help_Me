@@ -19,6 +19,15 @@ public class Facebook {
     private String local;
     private String localId;
     private String link;
+    private String aniversario;
+
+    public String getAniversario() {
+        return aniversario;
+    }
+
+    public void setAniversario(String aniversario) {
+        this.aniversario = aniversario;
+    }
     
     public String getId() {
         return id;

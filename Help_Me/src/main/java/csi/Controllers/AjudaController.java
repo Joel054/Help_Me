@@ -6,7 +6,9 @@
 package csi.Controllers;
 
 import csi.Modelos.Ajuda;
+import csi.Modelos.Usuario;
 import csi.com.mycompany.help_me.CRUD.AjudaCRUD;
+import csi.com.mycompany.help_me.CRUD.UsuarioCRUD;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -18,14 +20,12 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class AjudaController {
     @RequestMapping("newAjuda")
-    public ModelAndView NewAjuda(Ajuda ajuda) throws Exception{
-        ModelAndView mv = null;
+    public String NewAjuda(Ajuda ajuda) throws Exception{
         AjudaCRUD ac = new AjudaCRUD();
         ac.InsertAjuda(ajuda);
-        
-        mv = FuncoesUteis.GeraMVFeed(ajuda.getIdUsuario(), SetingValues.Requests.Feed.toString());
-        
-        return mv;
+        UsuarioCRUD uc = new UsuarioCRUD();
+        Usuario u = uc.GetUsuario(ajuda.getIdUsuario());
+        return "redirect:login?linkFacebook="+u.getLinkFacebook();
     }
     
     @RequestMapping("updateAjuda")

@@ -6,7 +6,9 @@
 package csi.Controllers;
 
 import csi.Modelos.Local;
+import csi.Modelos.Usuario;
 import csi.com.mycompany.help_me.CRUD.LocalCRUD;
+import csi.com.mycompany.help_me.CRUD.UsuarioCRUD;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -18,12 +20,13 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class LocalController {
     @RequestMapping("newLocal")
-    public ModelAndView NewLocalUsuario(Local local,String idUsuario) throws Exception{
-        ModelAndView mv = null;
+    public String NewLocalUsuario(Local local,String idUsuario) throws Exception{
         LocalCRUD lc = new LocalCRUD();
         lc.InsertLocal(local,idUsuario);
         
-        return FuncoesUteis.GeraMVFeed(idUsuario, SetingValues.Requests.Feed.toString());
+        UsuarioCRUD uc = new UsuarioCRUD();
+        Usuario u = uc.GetUsuario(idUsuario);
+        return "redirect:login?linkFacebook="+u.getLinkFacebook();
         
     }
     

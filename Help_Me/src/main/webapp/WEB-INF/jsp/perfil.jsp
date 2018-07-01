@@ -6,6 +6,7 @@
 
 <%@page import="csi.Modelos.Facebook"%>
 <%@page import="csi.com.mycompany.help_me.CRUD.UsuarioCRUD"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <head>
@@ -61,7 +62,7 @@
                 <li><a href="#!" class="black-text">Inicio</a></li>
                 <li><a href="#!" class="black-text">Inicio</a></li>
                 <li><a href="#!" class="black-text">Inicio</a></li>
-                <li><a href="index.jsp" class="fb-login-button black-text" data-button-type="login_with"  data-auto-logout-link="true" data-use-continue-as="true">Sair</a></li>
+                <li><a href="#!" class="fb-login-button black-text" data-button-type="login_with"  data-auto-logout-link="true" data-use-continue-as="true">Sair</a></li>
                 
             </ul>
         </div>
@@ -113,10 +114,7 @@
         <i class="large material-icons">edit</i>
     </a>
 </div>
-    <div class="card">
-        <h1>Olá</h1>
-        Nome: ${facebook.nome}
-    </div>
+
 <main>
     
     <div class="container">
@@ -130,16 +128,15 @@
                 background-size: auto 2px;">
                 </div>
                 <figure class="card-profile-image">
-                        <img style="    border: 1px solid #999;border-color: black;width: 100px;height: 100px;border-radius: 50px;position: absolute;" class="circle"src="img/1.jpg">
-
-                    </figure>
+                    <img style="border: 1px solid #999;border-color: orange;width: 60px;height: 60px;border-radius: 50px;position: absolute;" class="circle" src="${facebook.foto}">
+                </figure>
 
                 <div class="card-content">
 
                     <div class="row pt-2">
                         <div class="col s12 m3 offset-m2">
-                            <h4 class="card-title grey-text text-darken-4">Joel Ferreira da Silva</h4>
-                            <p class="medium-small grey-text">Roraima,1000. Camobi-SM</p>
+                            <h4 class="card-title grey-text text-darken-4"><a href="${facebook.link}" target="_blank">${facebook.nome}</a></h4>
+                            <p class="medium-small grey-text">${facebook.local}</p>
                         </div>
                         <div class="col s12 m3 center-align">
                             <h4 class="card-title grey-text text-darken-4">10</h4>
@@ -161,7 +158,7 @@
                 </div>
                 <div class="card-reveal">
                     <p>
-                    <span class="card-title grey-text text-darken-4">Joel Ferreira da Silva
+                    <span class="card-title grey-text text-darken-4">${facebook.nome}
                       <i class="material-icons right">close</i>
                     </span>
                     </p>
@@ -169,13 +166,13 @@
                         <svg style="width:24px;height:24px" viewBox="0 0 24 24">
                             <path fill="#ff9800" d="M12,2C6.5,2 2,6.14 2,11.25C2,14.13 3.42,16.7 5.65,18.4L5.71,22L9.16,20.12L9.13,20.11C10.04,20.36 11,20.5 12,20.5C17.5,20.5 22,16.36 22,11.25C22,6.14 17.5,2 12,2M13.03,14.41L10.54,11.78L5.5,14.41L10.88,8.78L13.46,11.25L18.31,8.78L13.03,14.41Z" />
                         </svg>
-                         fsilvajoel</p>
+                         tem q ver como pegar</p>
                     <p>
-                        <i class="material-icons text-orange text-darken-2">perm_phone_msg</i> (54) 991291310</p>
+                        <i class="material-icons text-orange text-darken-2">perm_phone_msg</i>nao tem como pegar do face</p>
                     <p>
-                        <i class="material-icons text-orange text-darken-2">email</i> mail@inf.ufsm.br</p>
+                        <i class="material-icons text-orange text-darken-2">email</i>${facebook.email}</p>
                     <p>
-                        <i class="material-icons text-orange text-darken-2">cake</i> 02 de Junho de 1990</p>
+                        <i class="material-icons text-orange text-darken-2">cake</i>${facebook.aniversario}</p>
                 </div>
             </div>
             <!--/ profile-page-header -->
@@ -197,24 +194,115 @@
                 <div class="container center">
                     <h4 style="padding: 20px">Meus Pedidos</h4>
                 </div>
-                <div class="container">
-                    <ul class="collapsible popout">
-                        <li>
-                            <div class="collapsible-header"><i class="material-icons">filter_drama</i>First</div>
-                            <div class="collapsible-body"><span>Lorem ipsum dolor sit amet. Lorem ipsum dolor sit ametLorem ipsum dolor sit ametLorem ipsum dolor sit ametLorem ipsum dolor sit amet</span>
+                
+                    <c:forEach var="ajuda" items="${UsuarioLogado.ajudas}"> 
+                        <c:choose>
+                            <c:when test="${ajuda.tipo == 'pedidoDeAjuda'}">
+                            <div class="container">
+                                <div class="col s12 m12">
+                                    <div class="card darken-1 white">
+                                        <div class="card-content black-text">
+                                            <div class="cabecalho-card">
+                                                <div class="row">
+                                                    <div class="col s12 m4">
+                                                        <div class="row">
+                                                            <div class="col s6 m5">
+                                                                <img class="circle" height="60px" width="60px" src="${facebook.foto}">
+                                                            </div>
+                                                            <div class="col s6 m7">
+                                                                <h6>${ajuda.usuario.nome}</h6>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="container card-description">
+                                                <h5>${ajuda.titulo}</h5>
+                                                <p>${ajuda.descricao} </p>
+                                                <p style="margin: 20px; font-size: 14px">${ajuda.local.nome}</p>
+                                            </div>
+                                            <div class="card-action">
+                                                <div class="center">
+                                                    <c:forEach var="ajudaProcesso" items="${ajuda.emProcesso}">
+                                                        <c:choose>
+                                                            <c:when test="${ajudaProcesso.status == 'Iniciado'}">
+                                                                    <form action="updateAjudaEmProcesso" method="post"> 
+                                                                        ${ajudaProcesso.ajudante.nome} quer ajudar você nesta tarefa! ${ajudaProcesso.status}
+                                                                        <input type="hidden" name="id" value="${ajudaProcesso.id}">
+                                                                        <input type="hidden" name="idAjudado" value="${ajudaProcesso.idAjudado}">
+                                                                        <input type="hidden" name="idAjudante" value="${ajudaProcesso.idAjudante}"/>
+                                                                        <input type="hidden" name="idAjuda" value="${ajuda.id}"/>
+                                                                        <input type="hidden" name="status" value="EmProcesso"/>
+                                                                        <input type="hidden" name="idUsuario" value="${UsuarioLogado.id}"/>
+
+                                                                        <button  type="submit" class="btn btn-large orange" style="width:80%">aceitar</button>
+                                                                    </form>
+                                                            </c:when>
+                                                            <c:when test="${ajudaProcesso.status == 'EmProcesso'}">
+                                                                <form action="updateAjudaEmProcesso" method="post"> 
+                                                                    A ajuda foi realizada? ${ajudaProcesso.status}
+                                                                    <input type="hidden" name="id" value="${ajudaProcesso.id}">
+                                                                    <input type="hidden" name="idAjudado" value="${ajudaProcesso.idAjudado}">
+                                                                    <input type="hidden" name="idAjudante" value="${ajudaProcesso.idAjudante}"/>
+                                                                    <input type="hidden" name="idAjuda" value="${ajuda.id}"/>
+                                                                    <input type="hidden" name="status" value="Finalizado"/>
+                                                                    <input type="hidden" name="idUsuario" value="${UsuarioLogado.id}"/>
+
+                                                                    <button  type="submit" class="btn btn-large orange" style="width:80%">Finalizar Tarefa</button>
+                                                                </form>
+                                                            </c:when>
+                                                            <c:otherwise>
+                                                                A ajuda foi finalizada!
+                                                            </c:otherwise>
+                                                        </c:choose>
+                                                    </c:forEach>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                        </li>
-                        <li>
-                            <div class="collapsible-header"><i class="material-icons">place</i>Second</div>
-                            <div class="collapsible-body"><span>Lorem ipsum dolor sit ametLorem ipsum dolor sit ametLorem ipsum dolor sit ametLorem ipsum dolor sit amet.</span>
+                            </c:when>
+                            <c:otherwise>
+                                <div class="container">
+                                <div class="col s12 m12">
+                                    <div class="card darken-1 white">
+                                        <div class="card-content black-text">
+                                            <div class="cabecalho-card">
+                                                <div class="row">
+                                                    <div class="col s12 m4">
+                                                        <div class="row">
+                                                            <div class="col s6 m5">
+                                                                <img class="circle" height="60px" width="60px" src="${facebook.foto}">
+                                                            </div>
+                                                            <div class="col s6 m7">
+                                                                <h6>${ajuda.usuario.nome}</h6>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="container card-description">
+                                                <h5>${ajuda.titulo}</h5>
+                                                <p>${ajuda.descricao} </p>
+                                                <p style="margin: 20px; font-size: 14px">${ajuda.local.nome}</p>
+                                            </div>
+                                            <div class="card-action">
+                                                <c:forEach var="ajudaProcesso" items="${ajuda.emProcesso}">
+                                                        <div class="center">
+                                                            ${ajudaProcesso.ajudante.nome} quer sua ajuda!
+                                                            <a href="#" class="btn btn-large deep-orange" style="width: 80%">aceitar</a>
+                                                        </div>
+                                                </c:forEach>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                        </li>
-                        <li>
-                            <div class="collapsible-header"><i class="material-icons">whatshot</i>Third</div>
-                            <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
-                        </li>
-                    </ul>
-                </div>
+                            </c:otherwise>
+                        </c:choose>
+                </c:forEach>
+                
             </div>
         </div>
     </div>
