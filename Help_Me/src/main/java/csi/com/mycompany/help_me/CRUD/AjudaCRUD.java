@@ -153,8 +153,8 @@ public class AjudaCRUD {
         // carregar o driver           
        // criar a declaracao (statement) sql
        
-       String sql = "select * from Ajuda a inner join _local l on l.id = a.idLocal inner join localusuario lu on lu.idLocal = l.id inner join Usuario u on u.id = lu.idUsuario "
-               + "where u.id = ? ORDER BY a.id DESC ;";
+       
+       String sql = "select distinct a.id, a.* from ajuda a inner join _local l on l.id = a.idLocal inner join _local l2 on l2.cidade = l.cidade inner join localUsuario lu on lu.idLocal = l2.id inner join Usuario u on u.id = lu.idUsuario where u.id = ? order by a.id desc;";
               
        Connection conecta = ConectaMysql.getConexao();
        PreparedStatement stmt =conecta.prepareStatement(sql);
@@ -164,13 +164,14 @@ public class AjudaCRUD {
        // manipular o resultado da instrucao sql
        while(rs.next()){
                Ajuda ajuda = new Ajuda();
-               ajuda.setTitulo(rs.getString("titulo"));
-               ajuda.setTipo(rs.getString("tipo"));
-               ajuda.setDescricao(rs.getString("descricao"));
-               ajuda.setId(rs.getInt("id"));
-               ajuda.setIdLocal(rs.getInt("idLocal"));
-               ajuda.setIdUsuario(rs.getString("idUsuario"));
+               ajuda.setTitulo(rs.getString("a.titulo"));
+               ajuda.setTipo(rs.getString("a.tipo"));
+               ajuda.setDescricao(rs.getString("a.descricao"));
+               ajuda.setId(rs.getInt("a.id"));
+               ajuda.setIdLocal(rs.getInt("a.idLocal"));
+               ajuda.setIdUsuario(rs.getString("a.idUsuario"));
                ajudas.add(ajuda);
+               System.out.println("ajuda: "+ ajuda.getTitulo());
        }
 
        stmt.close();

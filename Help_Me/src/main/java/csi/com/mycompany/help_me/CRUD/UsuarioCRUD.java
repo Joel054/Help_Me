@@ -28,7 +28,7 @@ import org.json.JSONObject;
 public class UsuarioCRUD {
     
     public static Facebook call_me(String access_token) throws Exception {
-        String url = "https://graph.facebook.com/v3.0/me?fields=id%2Cname%2Cpicture%2Cemail%2Clocation%2Clink&access_token="+access_token;
+        String url = "https://graph.facebook.com/v3.0/me?fields=id%2Cname%2Cpicture%2Cemail%2Clocation%2Clink%2Cbirthday&access_token="+access_token;
      
         System.out.println(access_token+" linkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk");
         URL obj = new URL(url);
@@ -72,6 +72,9 @@ public class UsuarioCRUD {
         //link p face
         facebook.setLink(myResponse.getString("link"));
         facebook.setAccess_token(access_token);
+        //data de aniversario
+        facebook.setAniversario(myResponse.getString("birthday"));
+        
         return facebook;
     }
     

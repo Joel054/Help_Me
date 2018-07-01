@@ -97,6 +97,7 @@ public class AjudaProcessoCRUD {
         stmt.setString(1, ajuda.getIdAjudado());
         stmt.setString(2, ajuda.getIdAjudante());
         stmt.setInt(3, ajuda.getIdAjuda());
+        System.out.println("aqui é 2: "+ ajuda.getId());
         stmt.setString(4, ajuda.getStatus());
         stmt.setInt(5, ajuda.getId());
         stmt.executeUpdate();

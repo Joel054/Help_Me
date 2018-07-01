@@ -11,6 +11,7 @@ import csi.Modelos.Usuario;
 import csi.Controllers.SetingValues;
 import csi.Modelos.Facebook;
 import csi.com.mycompany.help_me.CRUD.AjudaCRUD;
+import csi.com.mycompany.help_me.CRUD.AjudaProcessoCRUD;
 import csi.com.mycompany.help_me.CRUD.LocalCRUD;
 import csi.com.mycompany.help_me.CRUD.UsuarioCRUD;
 import java.io.IOException;
@@ -53,9 +54,12 @@ public class FuncoesUteis {
         usuario.setPerfilAll();
         AjudaCRUD ajudaCrud = new AjudaCRUD();
         LocalCRUD locaisCrud = new LocalCRUD();
+        AjudaProcessoCRUD apc = new AjudaProcessoCRUD();
         
         Facebook facebook = usuarioCrud.call_me(usuario.getLinkFacebook());
         List<Ajuda> ajudasFeed = ajudaCrud.ListaAjudasFeed(usuario.getId());
+        
+        
 
         try{
             

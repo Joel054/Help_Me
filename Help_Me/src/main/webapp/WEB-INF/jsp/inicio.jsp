@@ -48,7 +48,7 @@
                                                      style="height: 62px; width: 132px; font-family: moon;"></a>
         <!--localidade-->
         <div class="brand-logo center hide-on-med-and-down">
-            <a class="dropdown-trigger black-text" href="#" style="font-family: moon;" data-target="dropdown">Camobi<i
+            <a class="dropdown-trigger black-text" href="#" style="font-family: moon;" data-target="dropdown">${facebook.local}<i
                     class="material-icons right black-text">expand_more</i></a>
             <ul id="dropdown" class="dropdown-content" style="font-family: moon;">
                 <c:forEach var="locais" items="${UsuarioLogado.locais}"> 
@@ -62,14 +62,11 @@
                     class="material-icons right">expand_more</i></a>
             <!-- Dropdown Structure -->
             <ul id='dropdown1' class='dropdown-content black-text'>
-                <li style="text-align: center">
-                    <form action="perfil" method="post">
-                        <input type="hidden" name="linkFacebook" value="${UsuarioLogado.linkFacebook}"/>
-                        <button type="submit"><img src="${facebook.foto}" class="circle">Perfil</button>
-                    </form>
+                <li style="text-align: center" >
+                     <a href='javascript:perfil.submit()' class="black-text"><img src="${facebook.foto}" class="circle">Perfil</a>   
                 </li>
                 <li><a href="#!" class="black-text">Inicio</a></li>
-                <li><a href="#!" class="black-text">Inicio</a></li>
+                <li><a href='javascript:perfil.submit()' class="black-text">histórico</a></li>
                 <li><a href="#!" class="black-text">Inicio</a></li>
                 <li><a href="index.jsp" class="fb-login-button black-text" data-button-type="login_with"  data-auto-logout-link="true" data-use-continue-as="true">Sair</a></li>
                 
@@ -136,6 +133,7 @@
         </div>
     </div>
     <!--end busca-->
+
     
     <c:forEach var="ajudas" items="${ajudasFeed}"> 
         <c:choose>
@@ -322,7 +320,7 @@
         </div>
     </div>
     <!--End Card solicitação pedido-->
-    <!--<!-- Modal Pedir/oferecer ajuda -->-->
+    <!--<!-- Modal Pedir/oferecer ajuda -->
     <form action="newAjuda" method="post">
         <div id="modal1" class="modal modal-fixed-footer">
             <div class="modal-content center">
@@ -416,7 +414,12 @@
         </nav>
     </div>
   </div>     
-
+    
+    <!-- armazenar info para chamar perfil no menu -->
+    <form action="perfil" method="post" id="perfil" name="perfil">
+        <input type="hidden" name="linkFacebook" value="${UsuarioLogado.linkFacebook}"/>
+    </form>
+    
 </main>
 <!--logo, icone -->
 <!--END index-->
