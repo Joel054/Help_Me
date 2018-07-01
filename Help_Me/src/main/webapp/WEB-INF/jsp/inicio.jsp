@@ -376,20 +376,22 @@
         <form action="newLocal" method="post">
             <div class="modal-content center">
               <h4>Cadastrar novo Local</h4>
-              <p>A bunch of text</p>
-            </div>
-            
-            <div class="row">
-                <p id="demo"></p>
-                <div id="map" style="width:50%;height:50%;"></div>          
-            </div>
-            <div class="input-field col s12">
+                <div class="row">
+                    <div class="col m9 s12">
+                        <div id="map" style="width:100%;height:100%;"></div>
+                    </div>
+                    <div class="col m3 s12">
+                        <p id="demo"></p>
+                        <textarea id="textarea1" class="materialize-textarea" id="nome" name="nome" required></textarea>
+                    <label for="textarea1">Dê um nome para seu local</label>
+                    <input type="hidden" name="idUsuario" id="idUsuario" value="${facebook.id}"/>
+                    <input type="hidden" name="latitude" id="latitude"/>
+                    <input type="hidden" name="longitude" id="longitude"/>
+                    </div>
 
-                <textarea id="textarea1" class="materialize-textarea" id="nome" name="nome" required></textarea>
-                <label for="textarea1">Dê um nome para seu local</label>
-                <input type="hidden" name="idUsuario" id="idUsuario" value="${facebook.id}"/>
-                <input type="hidden" name="latitude" id="latitude"/>
-                <input type="hidden" name="longitude" id="longitude"/>
+
+                </div>
+
             </div>
             <div class="modal-footer">
               <button type="submit"  class="modal-close waves-effect waves-green btn-flat">Concluir</button>

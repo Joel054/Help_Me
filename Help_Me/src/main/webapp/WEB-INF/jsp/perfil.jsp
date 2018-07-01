@@ -3,7 +3,7 @@
     Created on : 15/06/2018, 21:33:11
     Author     : vitor
 --%>
-
+    <%--<%@include file="inicio.jsp" %>--%>
 <%@page import="csi.Modelos.Facebook"%>
 <%@page import="csi.com.mycompany.help_me.CRUD.UsuarioCRUD"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
@@ -93,30 +93,31 @@
     </div>
 </nav>
 
-<!--botao adicionar ajuda-->
-<div class="fixed-action-btn">
+    <!--botao adicionar ajuda-->
+    <div class="fixed-action-btn">
     <a href="#modal1" class="tooltipped btn-floating btn-large waves-effect waves-light deep-orange modal-trigger" data-position="left" data-tooltip="Criar nova solicitação">
-        <i class="large material-icons">add</i>
+    <i class="large material-icons">add</i>
     </a>
-</div>
-<div class="fixed-action-btn" style="bottom: 100px;">
+    </div>
+    <!--botao buscar-->
+    <div class="fixed-action-btn" style="bottom: 100px;">
     <a href="#modal-busca" class="tooltipped btn-floating btn-large waves-effect waves-light orange modal-trigger" data-position="left" data-tooltip="Buscar Ajuda">
-        <i class="large material-icons">search</i>
+    <i class="large material-icons">search</i>
     </a>
-</div>
-<div class="fixed-action-btn" style="bottom: 180px;">
+    </div>
+    <!--botao adicionar local-->
+    <div class="fixed-action-btn" style="bottom: 180px;">
     <a href="#modal-novolocal" class="tooltipped modal-trigger btn-floating  btn-large waves-effect waves-light light-red modal-trigger" data-position="left" data-tooltip="Alterar Localização atual">
-        <i class="large material-icons">add_location</i>
+    <i class="large material-icons">add_location</i>
     </a>
-</div>
-<div class="fixed-action-btn" style="bottom: 260px;">
-    <a href="#buscar" class="btn-floating btn-large waves-effect waves-light rosa modal-trigger">
-        <i class="large material-icons">edit</i>
+    </div>
+    <!--botao editar perfil-->
+    <div class="fixed-action-btn" style="bottom: 260px;">
+    <a href="#editar_perfil" class="btn-floating btn-large waves-effect waves-light rosa modal-trigger">
+    <i class="large material-icons">edit</i>
     </a>
-</div>
-
-<main>
-    
+    </div>
+<div>
     <div class="container">
         <div id="profile-page" class="section">
             <!-- profile-page-header -->
@@ -306,7 +307,51 @@
             </div>
         </div>
     </div>
-    
+    <!-- Modal editar user -->
+    <div id="editar_perfil" class="modal modal-fixed-footer">
+    <div class="modal-content center">
+    <div class="row">
+    <form class="col s12">
+    <div class="row">
+    <div class="input-field col s12">
+    <input disabled value="${facebook.nome}" id="disabled" type="text" class="validate">
+    <label for="disabled">Nome</label>
+    </div>
+    </div>
+    <div class="row">
+    <div class="input-field col s6">
+    <input placeholder="Placeholder" id="first_name" type="text" class="validate">
+    <label for="first_name">First Name</label>
+    </div>
+    <div class="input-field col s6">
+    <input id="last_name" type="text" class="validate">
+    <label for="last_name">Last Name</label>
+    </div>
+    </div>
+
+    <div class="row">
+    <div class="input-field col s12">
+    <!--<input id="password" type="tel" class="validate">-->
+    <input type="text" name="telefone" data-mask="(00) 0000-0000" data-mask-selectonfocus="true" />
+
+    <!--<label for="password">Telefone</label>-->
+    </div>
+    </div>
+    <div class="row">
+    <div class="input-field col s12">
+    <input id="email" type="email" class="validate">
+    <label for="email">Email</label>
+    </div>
+    </div>
+    </form>
+    </div>
+    </div>
+    <div class="modal-footer">
+    <a href="#!" class="modal-close waves-effect waves-green btn-flat left grey">Fechar</a>
+    <a href="#!" class="modal-close waves-effect waves-green btn-flat right orange" type="submit">Confirmar</a>
+    </div>
+    </div>
+
     <!-- Modal Pedir/oferecer ajuda -->
     <form action="#">
         <div id="modal1" class="modal modal-fixed-footer">
@@ -392,7 +437,7 @@
     </div>
   </div>
          
-</main>
+</div>
 <!--logo, icone -->
 <!--END index-->
 
@@ -428,11 +473,11 @@
     $(document).ready(function(){
         $('.tooltipped').tooltip();
     });
-
-
-
+//    mascara para o telefone
+    $(document).ready(function(){
+    $('#telefone').mask('(00) 0000-0000');
+});
 </script>
-
 </body>
 </html>
 
