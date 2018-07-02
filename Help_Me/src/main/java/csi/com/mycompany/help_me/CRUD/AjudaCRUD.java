@@ -45,9 +45,16 @@ public class AjudaCRUD {
     }
     
     public void DeleteAjuda(int idAjuda) throws SQLException, Exception{
+        String sql1 = "DELETE from AjudaProcesso where idAjuda =?";
         String sql = "DELETE from Ajuda where id =?";
         
         Connection conecta = ConectaMysql.getConexao();
+        
+        PreparedStatement stmt1 =conecta.prepareStatement(sql1);
+        stmt1.setInt(1, idAjuda);
+        stmt1.executeUpdate();
+        stmt1.close();
+        
         PreparedStatement stmt =conecta.prepareStatement(sql);
         stmt.setInt(1, idAjuda);
         stmt.executeUpdate();
@@ -123,10 +130,12 @@ public class AjudaCRUD {
 
         // carregar o driver           
        // criar a declaracao (statement) sql
-       String sql = "select * from Ajuda a where idUsuario = ? ; ";
+       String sql = "select * from Ajuda a left join AjudaProcesso ap on a.id = ap.idAjuda where idAjudante = ? or idAjudado = ? or a.idUsuario=?;";
        Connection conecta = ConectaMysql.getConexao();
        PreparedStatement stmt =conecta.prepareStatement(sql);
        stmt.setString(1, idUsuario);
+       stmt.setString(2, idUsuario);
+       stmt.setString(3, idUsuario);
        // executar instrucao sql
        ResultSet rs = stmt.executeQuery();
        // manipular o resultado da instrucao sql

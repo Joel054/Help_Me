@@ -31,24 +31,23 @@ public class AjudaEmProcessoController {
     }
     
     @RequestMapping("updateAjudaEmProcesso")
-    public String UpdatejudaEmProcesso(AjudaProcesso ajudaProcesso, String idUsuario)throws Exception{
+    public String UpdatejudaEmProcesso(AjudaProcesso ajudaProcesso, String idUsuario, String pagina)throws Exception{
         AjudaProcessoCRUD ac = new AjudaProcessoCRUD();
         System.out.println("aqui é: "+ ajudaProcesso.getId());
         ac.UpdateAjudaProcesso(ajudaProcesso);
+
+        UsuarioCRUD uc = new UsuarioCRUD();
+        Usuario u = uc.GetUsuario(idUsuario);
+        return "redirect:"+pagina+"?linkFacebook="+u.getLinkFacebook();
+    }
+    
+    @RequestMapping("deleteAjudaEmProcesso")
+    public String DeletejudaEmProcesso(int idAjudaProcesso, String idUsuario)throws Exception{
+        AjudaProcessoCRUD ac = new AjudaProcessoCRUD();
+        ac.DeleteAjudaProcesso(idAjudaProcesso);
         
         UsuarioCRUD uc = new UsuarioCRUD();
         Usuario u = uc.GetUsuario(idUsuario);
         return "redirect:perfil?linkFacebook="+u.getLinkFacebook();
-    }
-    
-    @RequestMapping("deleteAjudaEmProcesso")
-    public ModelAndView DeletejudaEmProcesso(int idAjudaProcesso, String idUsuario)throws Exception{
-        ModelAndView mv = null;
-        AjudaProcessoCRUD ac = new AjudaProcessoCRUD();
-        ac.DeleteAjudaProcesso(idAjudaProcesso);
-        
-        mv = FuncoesUteis.GeraMVFeed(idUsuario, SetingValues.Requests.Feed.toString());
-        
-        return mv;
     }
 }

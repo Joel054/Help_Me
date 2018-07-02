@@ -66,9 +66,9 @@ public class UsuarioCRUD {
         System.out.println("URL : "+data_response.getString("url"));
         facebook.setFoto(data_response.getString("url"));
         //local id e nome
-        JSONObject location_response=myResponse.getJSONObject("location");
+        /*JSONObject location_response=myResponse.getJSONObject("location");
         facebook.setLocalId(location_response.getString("id"));
-        facebook.setLocal(location_response.getString("name"));
+        facebook.setLocal(location_response.getString("name"));*/
         //link p face
         facebook.setLink(myResponse.getString("link"));
         facebook.setAccess_token(access_token);
