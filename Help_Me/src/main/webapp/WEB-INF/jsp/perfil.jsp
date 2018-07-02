@@ -24,100 +24,72 @@
     <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
 
 </head>
-<!--<div id="fb-root"></div>-->
     <script>(function(d, s, id) {
-      var js, fjs = d.getElementsByTagName(s)[0];
-      if (d.getElementById(id)) return;
-      js = d.createElement(s); js.id = id;
-      js.src = 'https://connect.facebook.net/pt_BR/sdk.js#xfbml=1&version=v3.0&appId=197552614211211&autoLogAppEvents=1';
-      fjs.parentNode.insertBefore(js, fjs);
-    }(document, 'script', 'facebook-jssdk'));</script>
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = 'https://connect.facebook.net/pt_BR/sdk.js#xfbml=1&version=v3.0&appId=197552614211211&autoLogAppEvents=1';
+        fjs.parentNode.insertBefore(js, fjs);
+      }(document, 'script', 'facebook-jssdk'));
+    </script>
+     <script type="text/javascript">
+        window.onload = function(){
+        getLocation();
+    };
+    </script>
 
 <body>
-<!--  menu responsivo -->
-<nav class="yellow">
-    <div class="nav-wrapper yellow container">
-        <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-        <!--menu normal-->
-        <a href="" class="hide-on-med-and-down"><img src="img/logo-nova-texto.png"
-                                                     style="height: 62px; width: 132px; font-family: moon;"></a>
-        <!--localidade-->
-        <div class="brand-logo center hide-on-med-and-down">
-            <a class="dropdown-trigger black-text" href="#" style="font-family: moon;" data-target="dropdown">Camobi<i
-                    class="material-icons right black-text">expand_more</i></a>
-            <ul id="dropdown" class="dropdown-content" style="font-family: moon;">
-                <li><a href="#" class="black-text">teste</a></li>
-                <li><a href="#" class="black-text">teste</a></li>
-                <li><a href="#" class="black-text">teste</a></li>
-            </ul>
-        </div>
-        <!--menu: inicio, historico-->
-         <div class="brand-logo right hide-on-med-and-down">
-             <a class='dropdown-trigger black-text' href='#' style="font-family: moon bold;" data-target='dropdown1'>Menu<i
-                    class="material-icons right">expand_more</i></a>
-            <!-- Dropdown Structure -->
-            <ul id='dropdown1' class='dropdown-content black-text'>
-                <li style="text-align: center"><a href="#!" class="black-text"><img src="${facebook.foto}" class="circle">
-                        Perfil</a></li>
-                <li><a href="#!" class="black-text">Inicio</a></li>
-                <li><a href="#!" class="black-text">Inicio</a></li>
-                <li><a href="#!" class="black-text">Inicio</a></li>
-                <li><a href="#!" class="fb-login-button black-text" data-button-type="login_with"  data-auto-logout-link="true" data-use-continue-as="true">Sair</a></li>
-                
-            </ul>
-        </div>
-
-        <!--menu responsivo-->
-        <ul class="sidenav" id="mobile-demo">
-            <li>
-                <div class="user-view">
-                <div class="background orange">
-
-                </div>
-                    <a href="#user" class="black-text" style="text-align: center"><img src="${facebook.foto}" class="circle"></a>
-                    <a href="#name"><span class="white-text name">Olá</span></a>
-                    <a href="#email"><span class="white-text email">Oriente-se</span></a>
-                </div>
-            </li>
-            <li><a href="#" style="font-family: moon;" class="black-text text-darken-15">inicio</a></li>
-            <li><a href="#" style="font-family: moon;" class="black-text text-darken-15">sobre</a></li>
-            <li><!--localidade-->
-                <a class="dropdown-trigger black-text" href="#" style="font-family: moon;" data-target="dropdown2">Local
-                    <i class="material-icons right black-text">expand_more</i></a>
-                <ul id="dropdown2" class="dropdown-content black-text">
-                    <li><a href="#" style="font-family: moon;">teste</a></li>
-                </ul>
-            </li>
-            </ul>
-       
-    </div>
-</nav>
-
-    <!--botao adicionar ajuda-->
-    <div class="fixed-action-btn">
-    <a href="#modal1" class="tooltipped btn-floating btn-large waves-effect waves-light deep-orange modal-trigger" data-position="left" data-tooltip="Criar nova solicitação">
-    <i class="large material-icons">add</i>
-    </a>
-    </div>
-    <!--botao buscar-->
-    <div class="fixed-action-btn" style="bottom: 100px;">
-    <a href="#modal-busca" class="tooltipped btn-floating btn-large waves-effect waves-light orange modal-trigger" data-position="left" data-tooltip="Buscar Ajuda">
-    <i class="large material-icons">search</i>
-    </a>
-    </div>
-    <!--botao adicionar local-->
-    <div class="fixed-action-btn" style="bottom: 180px;">
-    <a href="#modal-novolocal" class="tooltipped modal-trigger btn-floating  btn-large waves-effect waves-light light-red modal-trigger" data-position="left" data-tooltip="Alterar Localização atual">
-    <i class="large material-icons">add_location</i>
-    </a>
-    </div>
+    <jsp:include page="_partials/menu.jsp" flush="true" />
     <!--botao editar perfil-->
-    <div class="fixed-action-btn" style="bottom: 260px;">
+<div class="fixed-action-btn" style="bottom: 260px;">
     <a href="#editar_perfil" class="btn-floating btn-large waves-effect waves-light rosa modal-trigger">
-    <i class="large material-icons">edit</i>
+        <i class="large material-icons">edit</i>
     </a>
-    </div>
-<div>
+</div>
+
+    <!-- Modal editar user -->
+    <div id="editar_perfil" class="modal modal-fixed-footer">
+        <div class="modal-content center">
+            <div class="row">
+            <form class="col s12">
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input disabled value="${facebook.nome}" id="disabled" type="text" class="validate">
+                        <label for="disabled">Nome</label>
+                    </div>
+                </div>
+                <div class="row">
+                  <div class="input-field col s6">
+                    <input placeholder="Placeholder" id="first_name" type="text" class="validate">
+                    <label for="first_name">First Name</label>
+                  </div>
+                  <div class="input-field col s6">
+                    <input id="last_name" type="text" class="validate">
+                    <label for="last_name">Last Name</label>
+                  </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <!--<input id="password" type="tel" class="validate">-->
+                        <input type="text" name="telefone" data-mask="(00) 0000-0000" data-mask-selectonfocus="true" />
+                        <!--<label for="password">Telefone</label>-->
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input id="email" type="email" class="validate">
+                        <label for="email">Email</label>
+                    </div>
+                </div>              
+            </form>
+        </div>
+        </div>
+        <div class="modal-footer">
+            <a href="#!" class="modal-close waves-effect waves-green btn-flat left grey">Fechar</a>
+            <a href="#!" class="modal-close waves-effect waves-green btn-flat right orange" type="submit">Confirmar</a>
+        </div>
+    </div>  
+              
     <div class="container">
         <div id="profile-page" class="section">
             <!-- profile-page-header -->
@@ -180,15 +152,14 @@
             <!-- profile-page-content -->
         </div>
     </div>
-    </div>
     <div class="container">
         <div class="row">
             <div class="card col m12 s12 white">
                 <div class="container center" style="padding: 20px">
                     <h5 style="font-weight: bold"> Selecione o que voce quer visualizar:</h5>
                     <a class="waves-effect waves-light btn-large deep-orange black-text"><i class="material-icons left">list</i>Todos</a>
-                    <a class="waves-effect waves-light btn-large black-text"><i
-                            class="material-icons left">group_add</i>Meus Pedidos</a>
+                    <button class="waves-effect waves-light btn-large black-text">
+                        <i class="material-icons left">group_add</i>Meus Pedidos</button>
                     <a class="waves-effect waves-light btn-large yellow black-text"><i class="material-icons right">forum</i>Minhas
                         Ajudas</a>
                 </div>
@@ -215,6 +186,17 @@
                                                             </div>
                                                         </div>
                                                     </div>
+                                                    <div class="col s12 m4 m-t-20 center">
+                                                        <c:choose>
+                                                            <c:when test="${UsuarioLogado.id == ajuda.idUsuario}">
+                                                                <form action="deleteAjuda" method="post">
+                                                                   <input type="hidden" name="idAjuda" value="${ajuda.id}">
+                                                                   <input type="hidden" name="idUsuario" value="${UsuarioLogado.id}"/>
+                                                                   <button  type="submit" class="btn btn-danger glyphicon glyphicon-remove red" style="width:80%">Excluir Ajuda</button>
+                                                                </form>
+                                                            </c:when>
+                                                        </c:choose>
+                                                    </div>
                                                 </div>
                                             </div>
                                             <div class="container card-description">
@@ -226,35 +208,41 @@
                                                 <div class="center">
                                                     <c:forEach var="ajudaProcesso" items="${ajuda.emProcesso}">
                                                         <c:choose>
-                                                            <c:when test="${ajudaProcesso.status == 'Iniciado'}">
+                                                            <c:when test="${ajudaProcesso.status == 'Iniciado' && UsuarioLogado.id == ajuda.idUsuario}">
                                                                     <form action="updateAjudaEmProcesso" method="post"> 
-                                                                        ${ajudaProcesso.ajudante.nome} quer ajudar você nesta tarefa! ${ajudaProcesso.status}
+                                                                        <h6> ${ajudaProcesso.ajudante.nome} quer ajudar você nesta tarefa!</h6>
                                                                         <input type="hidden" name="id" value="${ajudaProcesso.id}">
                                                                         <input type="hidden" name="idAjudado" value="${ajudaProcesso.idAjudado}">
                                                                         <input type="hidden" name="idAjudante" value="${ajudaProcesso.idAjudante}"/>
                                                                         <input type="hidden" name="idAjuda" value="${ajuda.id}"/>
                                                                         <input type="hidden" name="status" value="EmProcesso"/>
                                                                         <input type="hidden" name="idUsuario" value="${UsuarioLogado.id}"/>
-
+                                                                        <input type="hidden" name="pagina" value="perfil"/>
                                                                         <button  type="submit" class="btn btn-large orange" style="width:80%">aceitar</button>
                                                                     </form>
                                                             </c:when>
-                                                            <c:when test="${ajudaProcesso.status == 'EmProcesso'}">
+                                                            <c:when test="${ajudaProcesso.status == 'EmProcesso' && UsuarioLogado.id == ajuda.idUsuario}">
                                                                 <form action="updateAjudaEmProcesso" method="post"> 
-                                                                    A ajuda foi realizada? ${ajudaProcesso.status}
+                                                                    <h6>A ajuda com ${ajudaProcesso.ajudante.nome} foi realizada? ${ajudaProcesso.status}</h6>
                                                                     <input type="hidden" name="id" value="${ajudaProcesso.id}">
                                                                     <input type="hidden" name="idAjudado" value="${ajudaProcesso.idAjudado}">
                                                                     <input type="hidden" name="idAjudante" value="${ajudaProcesso.idAjudante}"/>
                                                                     <input type="hidden" name="idAjuda" value="${ajuda.id}"/>
                                                                     <input type="hidden" name="status" value="Finalizado"/>
                                                                     <input type="hidden" name="idUsuario" value="${UsuarioLogado.id}"/>
-
+                                                                    <input type="hidden" name="pagina" value="perfil"/>
                                                                     <button  type="submit" class="btn btn-large orange" style="width:80%">Finalizar Tarefa</button>
                                                                 </form>
                                                             </c:when>
-                                                            <c:otherwise>
-                                                                A ajuda foi finalizada!
-                                                            </c:otherwise>
+                                                            <c:when test="${ajudaProcesso.status == 'Finalizado'}">
+                                                                 <p>${ajudaProcesso.ajudante.nome} ajudou nesta tarefa!</p>
+                                                            </c:when>
+                                                            <c:when test="${ajudaProcesso.status == 'Iniciado' && ajuda.idUsuario == ajudaProcesso.idAjudado}">
+                                                                 <h6>Esperando resposta de ${ajudaProcesso.ajudado.nome}: ${ajudaProcesso.status}</h6>
+                                                            </c:when>
+                                                            <c:when test="${ajudaProcesso.status == 'EmProcesso' && ajuda.idUsuario == ajudaProcesso.idAjudado}">
+                                                                 <h6>${ajudaProcesso.ajudado.nome} aceitou sua solicitacao de Ajuda: ${ajudaProcesso.status}</h6>
+                                                            </c:when>
                                                         </c:choose>
                                                     </c:forEach>
                                                 </div>
@@ -265,219 +253,17 @@
                             </div>
                             </c:when>
                             <c:otherwise>
-                                <div class="container">
-                                <div class="col s12 m12">
-                                    <div class="card darken-1 white">
-                                        <div class="card-content black-text">
-                                            <div class="cabecalho-card">
-                                                <div class="row">
-                                                    <div class="col s12 m4">
-                                                        <div class="row">
-                                                            <div class="col s6 m5">
-                                                                <img class="circle" height="60px" width="60px" src="${facebook.foto}">
-                                                            </div>
-                                                            <div class="col s6 m7">
-                                                                <h6>${ajuda.usuario.nome}</h6>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="container card-description">
-                                                <h5>${ajuda.titulo}</h5>
-                                                <p>${ajuda.descricao} </p>
-                                                <p style="margin: 20px; font-size: 14px">${ajuda.local.nome}</p>
-                                            </div>
-                                            <div class="card-action">
-                                                <c:forEach var="ajudaProcesso" items="${ajuda.emProcesso}">
-                                                        <div class="center">
-                                                            ${ajudaProcesso.ajudante.nome} quer sua ajuda!
-                                                            <a href="#" class="btn btn-large deep-orange" style="width: 80%">aceitar</a>
-                                                        </div>
-                                                </c:forEach>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+
                             </c:otherwise>
                         </c:choose>
                 </c:forEach>
-                
+
             </div>
         </div>
     </div>
-    <!-- Modal editar user -->
-    <div id="editar_perfil" class="modal modal-fixed-footer">
-    <div class="modal-content center">
-    <div class="row">
-    <form class="col s12">
-    <div class="row">
-    <div class="input-field col s12">
-    <input disabled value="${facebook.nome}" id="disabled" type="text" class="validate">
-    <label for="disabled">Nome</label>
-    </div>
-    </div>
-    <div class="row">
-    <div class="input-field col s6">
-    <input placeholder="Placeholder" id="first_name" type="text" class="validate">
-    <label for="first_name">First Name</label>
-    </div>
-    <div class="input-field col s6">
-    <input id="last_name" type="text" class="validate">
-    <label for="last_name">Last Name</label>
-    </div>
-    </div>
-
-    <div class="row">
-    <div class="input-field col s12">
-    <!--<input id="password" type="tel" class="validate">-->
-    <input type="text" name="telefone" data-mask="(00) 0000-0000" data-mask-selectonfocus="true" />
-
-    <!--<label for="password">Telefone</label>-->
-    </div>
-    </div>
-    <div class="row">
-    <div class="input-field col s12">
-    <input id="email" type="email" class="validate">
-    <label for="email">Email</label>
-    </div>
-    </div>
-    </form>
-    </div>
-    </div>
-    <div class="modal-footer">
-    <a href="#!" class="modal-close waves-effect waves-green btn-flat left grey">Fechar</a>
-    <a href="#!" class="modal-close waves-effect waves-green btn-flat right orange" type="submit">Confirmar</a>
-    </div>
-    </div>
-
-    <!-- Modal Pedir/oferecer ajuda -->
-    <form action="#">
-        <div id="modal1" class="modal modal-fixed-footer">
-            <div class="modal-content center">
-                    <p>
-                        <label>
-                            <input name="group1" type="radio" checked/>
-                            <span>Oferecer Ajuda</span>
-                        </label>
-                    </p>
-                    <p>
-                        <label>
-                            <input name="group1" type="radio"/>
-                            <span>Pedir ajuda</span>
-                        </label>
-                    </p>
-                    <div class="container">
-                        <div class="row">
-                            <div class="col s12">
-                                <div class="row">
-                                    <div class="input-field col s12">
-                                        <textarea id="textarea1" class="materialize-textarea"></textarea>
-                                        <label for="textarea1">Descricao</label>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col s6 m6">
-                                        Dia:<input type="date" name="day">
-                                    </div>
-                                    <div class="col s6 m6">
-                                        Hora:<input id="time" type="time">
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col s12">
-                                        Local: <a class="dropdown-trigger black-text" href="#"
-                                                        style="font-family: moon;" data-target="dropdown4">Camobi<i
-                                            class="material-icons black-text">expand_more</i></a>
-                                        <ul id="dropdown4" class="dropdown-content" style="font-family: moon;">
-                                            <li><a href="#" class="black-text">teste</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-            </div>
-            <div class="modal-footer">
-                <a href="#!" class="modal-close waves-effect waves-green btn-flat left grey">Fechar</a>
-                <a href="#!" class="modal-close waves-effect waves-green btn-flat right orange" type="submit">Confirmar</a>
-            </div>
-        </div>
-    </form>
-    <!--end-MODAL-->  
-    <!-- Modal Cadastrar novo local -->
-    <div id="modal-novolocal" class="modal modal-fixed-footer">
-        <form action="#">
-                <div class="modal-content center">
-              <h4>Cadastrar novo Local</h4>
-              <p>A bunch of text</p>
-            </div>
-            <div class="modal-footer">
-              <a href="#!" class="modal-close waves-effect waves-green btn-flat">Concluir</a>
-            </div>
-        </form>
-    </div>
-    <!-- Modal Busca-->
-     <div id="modal-busca" class="modal bottom-sheet">
-    <div class="modal-content">
-      <h4>Buscar</h4>
-       <nav>
-            <div class="nav-wrapper white">
-              <form>
-                <div class="input-field">
-                  <input id="search" type="search" required>
-                  <label class="label-icon" for="search"><i class="material-icons">search</i></label>
-                  <i class="material-icons">close</i>
-                </div>
-              </form>
-            </div>
-        </nav>
-    </div>
-  </div>
-         
 </div>
-<!--logo, icone -->
 <!--END index-->
-
-<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-<!-- Compiled and minified JavaScript -->
-<script src="js/materialize.min.js"></script>
-
-<script type="text/javascript">
-    $(document).ready(function () {
-        $('.sidenav').sidenav();
-    });
-
-    document.addEventListener('DOMContentLoaded', function () {
-        var elems = document.querySelectorAll('.dropdown-trigger');
-        var instances = M.Dropdown.init(elems, options);
-    });
-
-    // Or with jQuery
-
-    $('.dropdown-trigger').dropdown();
-    document.addEventListener('DOMContentLoaded', function () {
-        var elems = document.querySelectorAll('.modal');
-        var instances = M.Modal.init(elems, options);
-        var alignment = true;
-    });
-
-    // Or with jQuery
-
-    $(document).ready(function () {
-        $('.modal').modal();
-    });
-    //Tooltip
-    $(document).ready(function(){
-        $('.tooltipped').tooltip();
-    });
-//    mascara para o telefone
-    $(document).ready(function(){
-    $('#telefone').mask('(00) 0000-0000');
-});
-</script>
+<jsp:include page="_partials/scripts.jsp" flush="true" />
 </body>
 </html>
 
