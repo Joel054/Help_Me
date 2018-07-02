@@ -8,7 +8,7 @@
     <div class="nav-wrapper yellow container">
         <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
         <!--menu normal-->
-        <a href="" class="hide-on-med-and-down"><img src="img/logo-nova-texto.png"
+        <a href="javascript:inicio.submit()" class="hide-on-med-and-down"><img src="img/logo-nova-texto.png"
                                                      style="height: 62px; width: 132px; font-family: moon;"></a>
         <!--localidade-->
         <div class="brand-logo center hide-on-med-and-down">
