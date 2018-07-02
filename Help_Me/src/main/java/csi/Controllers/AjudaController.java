@@ -40,13 +40,13 @@ public class AjudaController {
     }
     
     @RequestMapping("deleteAjuda")
-    public ModelAndView EditAjuda(int idAjuda,String idUsuario) throws Exception{
+    public String EditAjuda(int idAjuda,String idUsuario) throws Exception{
         ModelAndView mv = null;
         AjudaCRUD ac = new AjudaCRUD();
         ac.DeleteAjuda(idAjuda);
         
-        mv = FuncoesUteis.GeraMVFeed(idUsuario, SetingValues.Requests.Feed.toString());
-        
-        return mv;
+        UsuarioCRUD uc = new UsuarioCRUD();
+        Usuario u = uc.GetUsuario(idUsuario);
+        return "redirect:perfil?linkFacebook="+u.getLinkFacebook();
     }
 }
