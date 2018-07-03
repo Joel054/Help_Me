@@ -8,7 +8,7 @@
     <div class="nav-wrapper yellow container">
         <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
         <!--menu normal-->
-        <a href="" class="hide-on-med-and-down"><img src="img/logo-nova-texto.png"
+        <a href='javascript:login.submit()' class="hide-on-med-and-down"><img src="img/logo-nova-texto.png"
                                                      style="height: 62px; width: 132px; font-family: moon;"></a>
         <!--localidade-->
         <div class="brand-logo center hide-on-med-and-down">
@@ -29,9 +29,8 @@
                 <li style="text-align: center" >
                      <a href='javascript:perfil.submit()' class="black-text"><img src="${facebook.foto}" class="circle">Perfil</a>
                 </li>
-                <li><a href="#!" class="black-text">Inicio</a></li>
+                <li><a href="javascript:login.submit()" class="black-text">Inicio</a></li>
                 <li><a href='javascript:perfil.submit()' class="black-text">historico</a></li>
-                <li><a href="#!" class="black-text">Inicio</a></li>
                 <li><a href="index.jsp" class="fb-login-button black-text" data-button-type="login_with"  data-auto-logout-link="true" data-use-continue-as="true">Sair</a></li>
                 
             </ul>
@@ -64,7 +63,7 @@
 <!--botoes laterais flutuantes-->
 <!--botao adicionar ajuda-->
 <div class="fixed-action-btn">
-    <a href="#modal1" class="tooltipped btn-floating btn-large waves-effect waves-light deep-orange modal-trigger" data-position="left" data-tooltip="Criar nova solicitaï¿½ï¿½o">
+    <a href="#modal1" class="tooltipped btn-floating btn-large waves-effect waves-light deep-orange modal-trigger" data-position="left" data-tooltip="Criar nova solicitacao">
         <i class="large material-icons">add</i>
     </a>
 </div>
@@ -76,7 +75,7 @@
 </div>
 <!--botao adicionar local-->
 <div class="fixed-action-btn" style="bottom: 180px;">
-    <a href="#modal-novolocal" class="tooltipped modal-trigger btn-floating  btn-large waves-effect waves-light light-red modal-trigger" data-position="left" data-tooltip="Alterar Localizaï¿½ï¿½o atual">
+    <a href="#modal-novolocal" class="tooltipped modal-trigger btn-floating  btn-large waves-effect waves-light light-red modal-trigger" data-position="left" data-tooltip="Alterar Localizacao atual">
         <i class="large material-icons">add_location</i>
     </a>
 </div>

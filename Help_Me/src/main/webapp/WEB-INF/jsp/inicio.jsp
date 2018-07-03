@@ -57,6 +57,9 @@
     <jsp:include page="_partials/card_solicitacao-ajuda.jsp" flush="true" />
     <!--End Card solicitação pedido-->
     <!-- armazenar info para chamar perfil no menu -->
+    <form action="login" method="post" id="login" name="login">
+        <input type="hidden" name="linkFacebook" value="${UsuarioLogado.linkFacebook}"/>
+    </form>
     <form action="perfil" method="post" id="perfil" name="perfil">
         <input type="hidden" name="linkFacebook" value="${UsuarioLogado.linkFacebook}"/>
     </form>

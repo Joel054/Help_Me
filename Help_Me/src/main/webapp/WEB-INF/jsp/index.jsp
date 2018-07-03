@@ -87,10 +87,10 @@
     </script>
     <!--  menu responsivo -->
     <nav class="yellow">
-        <div class="nav-wrapper yellow container">
+        <div class="nav-wrapper yellow container" id="inicio">
             <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
             <ul class="left hide-on-med-and-down">
-                    <li><a href="#" style="font-family: moon;" class="black-text text-darken-15">sobre</a></li>
+                    <li><a href="#sobre" style="font-family: moon;" class="black-text text-darken-15 pulse">sobre</a></li>
             </ul>
             <a href="#" class="brand-logo right"><img src="img/logo-nova.png" style="height: 54px; width: 68px;"></a>
 
@@ -105,8 +105,8 @@
                     <a href="#email"><span class="white-text email">Oriente-se</span></a>
                 </div>
             </li>
-            <li><a href="#" style="font-family: moon;" class="black-text text-darken-15">inicio</a></li>
-            <li><a href="#" style="font-family: moon;" class="black-text text-darken-15">sobre</a></li>
+            <li><a href="#inicio" style="font-family: moon;" class="black-text text-darken-15">inicio</a></li>
+            <li><a href="#sobre" style="font-family: moon;" class="black-text text-darken-15">sobre</a></li>
             </ul>
         </div>
     </nav>
@@ -170,21 +170,30 @@
               </div>
 
     <div class="container">
-        <div class="row"><img src="img/abelha-voando.png" alt="" style="height: 100%; width: 100%; margin-top: 40px;""></div>
+        <div class="row"><img src="img/abelha.gif" alt="" style="height: 100%; width: 100%; margin-top: 40px;"></div>
     </div>
 
-    <footer class="page-footer orange z-depth-3">
+    <div class="carousel" id="sobre">
+        <div class="row"><h4 class="center">Inspire-se!</h4></div>
+        <a class="carousel-item" href="#one!"><img src="img/uno.jpg"></a>
+        <a class="carousel-item" href="#two!"><img src="img/dos.jpg"></a>
+        <a class="carousel-item" href="#three!"><img src="img/3.jpg"></a>
+        <a class="carousel-item" href="#four!"><img src="img/4.jpg"></a>
+        <a class="carousel-item" href="#five!"><img src="img/5.jpg"></a>
+    </div>
+
+    <footer class="page-footer  yellow z-depth-3">
       <div class="container">
         <div class="row">
-          <div class="col l12 s12 center">
-            <h5 class="black-text">Help mi, doe um pouco de sí.</h5>
-            <p class="black-text text-lighten-4"><b>Conectar pessoas</b> que precisam realizar tarefas esporádicas com aquelas que desejam ajudar, através de uma rede social de ajuda na qual é possível cadastrar tarefas diárias e também solicitar pedido de auxílio em tarefas.</p>
+          <div class="col l12 s12  flow-text">
+            <h5 class="black-text "><b>Help mi</b>, doe um pouco de sí.</h5>
+            <blockquote class="black-text text-lighten-4"><b>Conectar pessoas</b> que precisam realizar tarefas esporádicas com aquelas que desejam ajudar, através de uma rede social de ajuda na qual é possível cadastrar tarefas diárias e também solicitar pedido de auxílio em tarefas.</blockquote>
           </div>
-        </div>
+        </div>   
       </div>
-      <div class="footer-copyright">
+      <div class="footer-copyright #ffc107 amber ">
         <div class="container center">
-        by clecio, vitor, joel
+            <h6 class="white-text" >by clecio, vitor, joel</h6>
         </div>
       </div>
     </footer>
@@ -205,6 +214,9 @@
         });
         $('.btn-new').on('click', function(){
             $('#login').modal();
+        });
+        $(document).ready(function(){
+            $('.carousel').carousel();
         });
         
     </script>
