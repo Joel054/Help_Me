@@ -35,8 +35,8 @@
                                     </div>
                                 </div>
                                 <div class="container card-description">
-                                    <p>${ajuda.titulo}</p>
-                                    <p>${ajuda.descricao}</p>
+                                    <h5>${ajuda.titulo}</h5>
+                                    <h5>${ajuda.descricao}</h5>
                                     <p style="margin: 20px; font-size: 14px">${ajuda.local.nome}</p>
                                 </div>
                                 <div class="card-action">
@@ -157,8 +157,8 @@
                                     </div>
                                 </div>
                                 <div class="container card-description">
-                                    <p>${ajuda.titulo}</p>
-                                    <p>${ajuda.descricao}</p>
+                                    <h5>${ajuda.titulo}</h5>
+                                    <h5>${ajuda.descricao}</h5>
                                     <p style="margin: 20px; font-size: 14px">${ajuda.local.nome}</p>
                                 </div>
                                 <div class="card-action">
@@ -172,13 +172,13 @@
                                                             <% aux1 = false; %>
                                                             <c:choose>
                                                                 <c:when test="${ajudaProcesso.status == 'Iniciado' }">
-                                                                    <h6 class="orange-text">Seu pedido de ajuda foi enviado para ${ajudaProcesso.ajudante.nome}: ${ajudaProcesso.status}</h6>
+                                                                    <h6 class="orange-text">Seu pedido de ajuda foi enviado para ${ajudaProcesso.ajudado.nome}: ${ajudaProcesso.status}</h6>
                                                                 </c:when>
                                                                 <c:when test="${ajudaProcesso.status == 'EmProcesso' }">
-                                                                    <h6 class="blue-text">${ajudaProcesso.ajudante.nome} aceitou sua solicitacao de ajuda.</h6> 
+                                                                    <h6 class="blue-text">${ajudaProcesso.ajudado.nome} aceitou sua solicitacao de ajuda. : ${ajudaProcesso.status} </h6> 
                                                                 </c:when>
                                                                 <c:when test="${ajudaProcesso.status == 'Finalizado' }">
-                                                                    <h6 class="green-text">${ajudaProcesso.ajudado.nome} ajudou ${ajudaProcesso.ajudante.nome}!</h6>
+                                                                    <h6 class="green-text">${ajudaProcesso.ajudante.nome} ajudou ${ajudaProcesso.ajudado.nome}!</h6>
                                                                 </c:when>
                                                             </c:choose>
                                                         </c:when>
@@ -206,7 +206,7 @@
                                                             <c:choose>
                                                                 <c:when test="${ajudaProcesso.status == 'Iniciado'}">
                                                                         <form action="updateAjudaEmProcesso" method="post"> 
-                                                                            <h6 class="PINK-text"> ${ajudaProcesso.ajudado.nome} quer sua ajuda nesta tarefa!</h6>
+                                                                            <h6 class="PINK-text"> ${ajudaProcesso.ajudante.nome} quer sua ajuda nesta tarefa!</h6>
                                                                             <input type="hidden" name="id" value="${ajudaProcesso.id}">
                                                                             <input type="hidden" name="idAjudado" value="${ajudaProcesso.idAjudado}">
                                                                             <input type="hidden" name="idAjudante" value="${ajudaProcesso.idAjudante}"/>
@@ -219,7 +219,7 @@
                                                                 </c:when>
                                                                 <c:when test="${ajudaProcesso.status == 'EmProcesso'}">
                                                                         <form action="updateAjudaEmProcesso" method="post"> 
-                                                                        <h6 class="blue-text" >A ajuda com ${ajudaProcesso.ajudado.nome} foi realizada? ${ajudaProcesso.status}</h6>
+                                                                        <h6 class="blue-text" >A ajuda com ${ajudaProcesso.ajudante.nome} foi realizada? ${ajudaProcesso.status}</h6>
                                                                         <input type="hidden" name="id" value="${ajudaProcesso.id}">
                                                                         <input type="hidden" name="idAjudado" value="${ajudaProcesso.idAjudado}">
                                                                         <input type="hidden" name="idAjudante" value="${ajudaProcesso.idAjudante}"/>
@@ -229,6 +229,9 @@
                                                                         <input type="hidden" name="pagina" value="login"/>
                                                                         <button  type="submit" class="btn btn-large deep-orange" style="width:80%">Finalizar Tarefa</button>
                                                                     </form>
+                                                                </c:when>
+                                                                <c:when test="${ajudaProcesso.status == 'Finalizado'}">
+                                                                    <h6 class="green-text">${ajudaProcesso.ajudado.nome} ajudou ${ajudaProcesso.ajudante.nome} nesta tarefa!</h6>
                                                                 </c:when>
                                                                 <c:when test="${ajudaProcesso.status == 'Finalizado' && UsuarioLogado.id == ajudaProcesso.idAjudante}">
                                                                      <h6 class="green-text">${ajudaProcesso.ajudado.nome} ajudou ${ajudaProcesso.ajudante.nome} nesta tarefa!</h6>

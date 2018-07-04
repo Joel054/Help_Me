@@ -50,7 +50,7 @@ public class IndexController {
     @RequestMapping("logout")
     public String logout(HttpSession session){
         session.invalidate();
-        return "index";
+        return SetingValues.Requests.Index.toString();
     }
     @RequestMapping("testee")
     public ResponseEntity<List<Usuario>> teste(String nome) throws Exception{

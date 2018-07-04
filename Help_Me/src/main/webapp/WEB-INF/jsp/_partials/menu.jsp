@@ -30,7 +30,7 @@
                 </li>
                 <li><a href="javascript:login.submit()" class="black-text">Inicio</a></li>
                 <li><a href='javascript:perfil.submit()' class="black-text">Historico</a></li>
-                <li><a href="index.jsp" class="fb-login-button black-text" data-button-type="login_with"  data-auto-logout-link="true" data-use-continue-as="true">Sair</a></li>
+                <li><a href='javascript:sair.submit()' class="fb-login-button black-text" data-max-rows="1" data-button-type="login_with" data-auto-logout-link="true" data-use-continue-as="false">Sair</a></li>
                 
             </ul>
         </div>
@@ -124,7 +124,7 @@
             </div>
             <div class="modal-footer">
                 <a href="#!" class="modal-close waves-effect waves-green btn-flat left grey">Fechar</a>
-                <button class="modal-close waves-effect waves-green btn-flat right orange" type="submit">Confirmar</button>
+                <button onclick="M.toast({html: 'Ajuda Inserida', classes: 'rounded'})" class="modal-close waves-effect waves-green btn-flat right orange btn" type="submit">Confirmar</button>
             </div>
         </div>
     </form>
@@ -151,7 +151,7 @@
 
             </div>
             <div class="modal-footer">
-              <button type="submit"  class="modal-close waves-effect waves-green btn-flat">Concluir</button>
+              <button type="submit" onclick="M.toast({html: 'Local Inserido', classes: 'rounded'})" class="modal-close waves-effect waves-green btn-flat">Concluir</button>
             </div>
         </form>
     </div>
@@ -172,3 +172,4 @@
         </nav>
     </div>
   </div>
+

@@ -60,10 +60,25 @@
         </c:when>
     </c:choose> 
     
+    <c:choose>
+        <c:when test="${UsuarioLogado.locais.size() != 0 && ajudasFeed.size() == 0}">
+            <div class="container center">               
+                <h3 >Só mais uma coisa..</h3>
+                <h4>Não encontramos nenhuma ajuda cadastrada neste local,  <b>adicione uma ajuda</b> no botão abaixo <i class="material-icons">arrow_downward</i>.</h4><br>
+                <a href="#modal1" class="btn-floating btn-large waves-effect waves-light deep-orange modal-trigger pulse"><i class="material-icons">add</i></a>
+            </div>
+        </c:when>
+    </c:choose> 
+    
     <!--Card ajuda-->
     <jsp:include page="_partials/card_ajuda.jsp" flush="true" />
     
     <!-- armazenar info para chamar perfil no menu -->
+        
+    <form action="logout" method="post" id="sair" name="sair">
+        <input type="hidden" name="linkFacebook" value="${UsuarioLogado.linkFacebook}"/>
+        
+    </form>
     <form action="login" method="post" id="login" name="login">
         <input type="hidden" name="linkFacebook" value="${UsuarioLogado.linkFacebook}"/>
     </form>

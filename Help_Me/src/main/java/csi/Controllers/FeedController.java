@@ -35,6 +35,7 @@ public class FeedController {
             usuario.setLinkFacebook(linkFacebook);
             usuario.setFoto(facebook.getFoto());
             usuario.setNome(facebook.getNome());
+            usuario.setUrlFacebook(facebook.getLink());
             usuarioCrud.UpdateUsuario(usuario);
             System.out.println(""+usuario.getId()+"   linkface:  "+usuario.getLinkFacebook());
             mv = FuncoesUteis.GeraMVFeed(usuario.getId(), SetingValues.Requests.Feed.toString());
@@ -82,9 +83,11 @@ public class FeedController {
             usuario.setLinkFacebook(linkFacebook);
             usuario.setNome(facebook.getNome());
             usuario.setFoto(facebook.getFoto());
+            usuario.setUrlFacebook(facebook.getLink());
             usuarioCrud.InsertUsuario(usuario);
             mv = login(linkFacebook);
         }
         return mv;
     }
+    
 }

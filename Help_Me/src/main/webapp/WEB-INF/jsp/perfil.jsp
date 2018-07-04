@@ -41,11 +41,11 @@
 <body>
     <jsp:include page="_partials/menu.jsp" flush="true" />
     <!--botao editar perfil-->
-<div class="fixed-action-btn" style="bottom: 260px;">
-    <a href="#editar_perfil" class="btn-floating btn-large waves-effect waves-light rosa modal-trigger">
-        <i class="large material-icons">edit</i>
-    </a>
-</div>
+    <div class="fixed-action-btn" style="bottom: 260px;">
+        <a href="#editar_perfil" class="btn-floating btn-large waves-effect waves-light rosa modal-trigger">
+            <i class="large material-icons">edit</i>
+        </a>
+    </div>
 
     <!-- Modal editar user -->
     <div id="editar_perfil" class="modal modal-fixed-footer">
@@ -101,23 +101,22 @@
                 background-size: auto 2px;">
                 </div>
                 <figure class="card-profile-image">
-                    <img style="border: 1px solid #999;border-color: #ffeb3b;width: 60px;height: 60px;border-radius: 50px;position: absolute;" class="circle" src="${facebook.foto}">
+                    <img style="border: 1px solid #999;border-color: #ffeb3b;width: 60px;height: 60px;border-radius: 50px;position: absolute;" class="circle" src="${UsuarioLogado.foto}">
                 </figure>
 
                 <div class="card-content">
 
                     <div class="row pt-2">
                         <div class="col s12 m3 offset-m2">
-                            <h4 class="card-title grey-text text-darken-4"><a href="${facebook.link}" target="_blank">${facebook.nome}</a></h4>
+                            <h4 class="card-title grey-text text-darken-4"><a href="${UsuarioLogado.urlFacebook}" target="_blank">${UsuarioLogado.nome}</a></h4>
                             <p class="medium-small grey-text">${facebook.local}</p>
                         </div>
                         <div class="col s12 m3 center-align">
-                            <h4 class="card-title grey-text text-darken-4">10</h4>
-                            <p class="medium-small grey-text">Ajudas recebidas</p>
+                            <h4 class="card-title grey-text text-darken-4">${UsuarioLogado.ajudas.size()}</h4>
+                            <p class="medium-small grey-text">Ajudas</p>
                         </div>
                         <div class="col s12 m3 center-align">
-                            <h4 class="card-title grey-text text-darken-4">6</h4>
-                            <p class="medium-small grey-text">Ajudas Oferecidas</p>
+
                         </div>
                         <div class="col s12 m1 right-align">
                             <div class="center-align">
@@ -131,18 +130,16 @@
                 </div>
                 <div class="card-reveal">
                     <p>
-                    <span class="card-title grey-text text-darken-4">${facebook.nome}
+                    <span class="card-title grey-text text-darken-4">${UsuarioLogado.nome}
                       <i class="material-icons right">close</i>
                     </span>
                     </p>
                     <p>
-                        <i class="fa fa-facebook-square material-icons text-orange text-darken-2"></i><a href="${facebook.link}" target="_blank">visitar perfil</a></p>
+                        <i class="fa fa-facebook-square text-orange text-darken-2"></i><a href="${UsuarioLogado.urlFacebook}" target="_blank">  Visitar perfil</a></p>
                     <p>
-                        <i class="material-icons text-orange text-darken-2">perm_phone_msg</i>nao tem como pegar do face</p>
+                        <i class="material-icons text-orange text-darken-2">email</i>  ${facebook.email}</p>
                     <p>
-                        <i class="material-icons text-orange text-darken-2">email</i>${facebook.email}</p>
-                    <p>
-                        <i class="material-icons text-orange text-darken-2">cake</i>${facebook.aniversario}</p>
+                        <i class="material-icons text-orange text-darken-2">cake</i>  ${facebook.aniversario}</p>
                 </div>
             </div>
             <!--/ profile-page-header -->
