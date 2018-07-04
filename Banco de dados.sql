@@ -7,8 +7,9 @@ create table Usuario(
 	id varchar(255) primary key,
     nome varchar(100),
     idade int,
-    likes int,
-    deslikes int,
+    foto varchar(255),
+    urlFacebook varchar(255),
+    telefone varchar(255),
     linkFacebook varchar(255)
 );
 

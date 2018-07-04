@@ -33,6 +33,8 @@ public class FeedController {
         Usuario usuario = usuarioCrud.Autentica(facebook.getId());
         if(usuario != null){
             usuario.setLinkFacebook(linkFacebook);
+            usuario.setFoto(facebook.getFoto());
+            usuario.setNome(facebook.getNome());
             usuarioCrud.UpdateUsuario(usuario);
             System.out.println(""+usuario.getId()+"   linkface:  "+usuario.getLinkFacebook());
             mv = FuncoesUteis.GeraMVFeed(usuario.getId(), SetingValues.Requests.Feed.toString());
@@ -76,10 +78,10 @@ public class FeedController {
             mv  = new ModelAndView(SetingValues.Requests.Index.toString());
             mv.addObject("RegisterError", "Usuario ja existente");         
         }else{
-            AjudaCRUD ajudaCrud = new AjudaCRUD();
             usuario = new Usuario(facebook.getId());
             usuario.setLinkFacebook(linkFacebook);
             usuario.setNome(facebook.getNome());
+            usuario.setFoto(facebook.getFoto());
             usuarioCrud.InsertUsuario(usuario);
             mv = login(linkFacebook);
         }

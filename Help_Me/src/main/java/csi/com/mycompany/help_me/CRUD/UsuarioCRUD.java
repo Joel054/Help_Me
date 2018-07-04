@@ -79,15 +79,15 @@ public class UsuarioCRUD {
     }
     
     public void InsertUsuario(Usuario usuario) throws Exception{
-        String sql = "insert into Usuario(id,nome,idade,likes,deslikes,linkFacebook)"
+        String sql = "insert into Usuario(id,nome,urlFacebook,telefone,foto,linkFacebook)"
                 + "values (?,?,?,?,?,?);";
         Connection conecta = ConectaMysql.getConexao();
         PreparedStatement stmt =conecta.prepareStatement(sql);
         stmt.setString(1, usuario.getId());
         stmt.setString(2, usuario.getNome());
-        stmt.setInt(3, usuario.getIdade());
-        stmt.setInt(4, usuario.getLikes());
-        stmt.setInt(5, usuario.getDeslikes());
+        stmt.setString(3, usuario.getUrlFacebook());
+        stmt.setString(4, usuario.getTelefone());
+        stmt.setString(5, usuario.getFoto());
         stmt.setString(6, usuario.getLinkFacebook());
         stmt.execute();
         stmt.close();
@@ -115,24 +115,11 @@ public class UsuarioCRUD {
         while(rs.next()){
             usuario.setNome(rs.getString("nome"));
             usuario.setId(rs.getString("id"));
-            usuario.setIdade(rs.getInt("idade"));
-            usuario.setLikes(rs.getInt("likes"));
-            usuario.setDeslikes(rs.getInt("deslikes"));
+            usuario.setUrlFacebook(rs.getString("urlFacebook"));
+            usuario.setTelefone(rs.getString("telefone"));
+            usuario.setFoto(rs.getString("foto"));
             usuario.setLinkFacebook(rs.getString("linkFacebook"));
-     /*       String sql1 = "select * from _Local l\n"
-                            + "where exists( select idLcal from LocalUsuario where idUsuario = ? and idLocal = l.id);";
-            PreparedStatement stmt1 =conecta.prepareStatement(sql);
-            stmt1.setInt(1, id);
-            ResultSet rs1 = stmt1.executeQuery();
-            while(rs1.next()){
-                Local local = new Local();
-                local.setId(rs1.getInt("id"));
-                local.setLatitude(rs1.getFloat("latitude"));
-                local.setLongitude(rs1.getFloat("longitude"));
-                local.setNome(rs1.getString("nome"));
-                usuario.addLocais(local);
-            }
-         */
+     
         }
         stmt.close();
         conecta.close();
@@ -152,12 +139,12 @@ public class UsuarioCRUD {
        // manipular o resultado da instrucao sql
        while(rs.next()){
            Usuario usuario = new Usuario();
-           usuario.setNome(rs.getString("nome"));
-           usuario.setId(rs.getString("id"));
-           usuario.setIdade(rs.getInt("idade"));
-           usuario.setLikes(rs.getInt("likes"));
-           usuario.setDeslikes(rs.getInt("deslikes"));
-           usuario.setLinkFacebook(rs.getString("linkFacebook"));
+        usuario.setNome(rs.getString("nome"));
+        usuario.setId(rs.getString("id"));
+        usuario.setUrlFacebook(rs.getString("urlFacebook"));
+        usuario.setTelefone(rs.getString("telefone"));
+        usuario.setFoto(rs.getString("foto"));
+        usuario.setLinkFacebook(rs.getString("linkFacebook"));
            usuarios.add(usuario);
        }
 
@@ -167,17 +154,17 @@ public class UsuarioCRUD {
     }
     
     public void UpdateUsuario(Usuario usuario) throws Exception{
-        String sql = "update Usuario set nome =?, idade =?, likes =?, deslikes=?, linkFacebook=? "
+        String sql = "update Usuario set nome =?, urlFacebook =?, telefone =?, foto=?, linkFacebook=? "
                 + "where id = ?";
         Connection conecta = ConectaMysql.getConexao();
         PreparedStatement stmt =conecta.prepareStatement(sql);
         
         stmt.setString(1, usuario.getNome());
-        stmt.setInt(2, usuario.getIdade());
-        stmt.setInt(3, usuario.getLikes());
-        stmt.setInt(4, usuario.getDeslikes());
+        stmt.setString(2, usuario.getUrlFacebook());
+        stmt.setString(3, usuario.getTelefone());
+        stmt.setString(4, usuario.getFoto());
         stmt.setString(5, usuario.getLinkFacebook());
-         stmt.setString(6, usuario.getId());
+        stmt.setString(6, usuario.getId());
 
         stmt.executeUpdate();
         stmt.close();
@@ -195,9 +182,9 @@ public class UsuarioCRUD {
             usuario = new Usuario();
             usuario.setNome(rs.getString("nome"));
             usuario.setId(rs.getString("id"));
-            usuario.setIdade(rs.getInt("idade"));
-            usuario.setLikes(rs.getInt("likes"));
-            usuario.setDeslikes(rs.getInt("deslikes"));
+            usuario.setUrlFacebook(rs.getString("urlFacebook"));
+            usuario.setTelefone(rs.getString("telefone"));
+            usuario.setFoto(rs.getString("foto"));
             usuario.setLinkFacebook(rs.getString("linkFacebook"));
      
         }

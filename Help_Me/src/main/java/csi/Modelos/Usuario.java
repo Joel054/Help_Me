@@ -16,11 +16,10 @@ import java.util.List;
 public class Usuario {
     private String id = "-1";
     private String nome;
-    private int idade;//não usado
-    private int likes;
-    private int deslikes;
     private String foto;
     private String linkFacebook;
+    private String urlFacebook;
+    private String telefone;
     private List<Ajuda> ajudas;
     private List<Local> locais;
     public Usuario() {
@@ -32,12 +31,9 @@ public class Usuario {
     
     
 
-    public Usuario(String id, String nome, int idade, int likes, int deslikes, String linkFacebook) throws Exception {
+    public Usuario(String id, String nome, String linkFacebook) throws Exception {
         setId(id);
         this.nome = nome;
-        this.idade = idade;
-        this.likes = likes;
-        this.deslikes = deslikes;
         this.linkFacebook = linkFacebook;
     }
 
@@ -60,31 +56,7 @@ public class Usuario {
     public void setNome(String nome) {
         this.nome = nome;
     }
-
-    public int getIdade() {
-        return idade;
-    }
-
-    public void setIdade(int idade) {
-        this.idade = idade;
-    }
-
-    public int getLikes() {
-        return likes;
-    }
-
-    public void setLikes(int likes) {
-        this.likes = likes;
-    }
-
-    public int getDeslikes() {
-        return deslikes;
-    }
-
-    public void setDeslikes(int deslikes) {
-        this.deslikes = deslikes;
-    }
-
+    
     public String getLinkFacebook() {
         return linkFacebook;
     }
@@ -126,4 +98,21 @@ public class Usuario {
     public void setFoto(String foto) {
         this.foto = foto;
     }
+
+    public String getUrlFacebook() {
+        return urlFacebook;
+    }
+
+    public void setUrlFacebook(String urlFacebook) {
+        this.urlFacebook = urlFacebook;
+    }
+
+    public String getTelefone() {
+        return telefone;
+    }
+
+    public void setTelefone(String telefone) {
+        this.telefone = telefone;
+    }
+    
 }

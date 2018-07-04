@@ -55,7 +55,7 @@ public class IndexController {
     @RequestMapping("testee")
     public ResponseEntity<List<Usuario>> teste(String nome) throws Exception{
         List<Usuario> ls = new ArrayList<>();
-        ls.add(new Usuario("1", nome, 0, 0, 0, "www.sdfsdfsdf"));
+        ls.add(new Usuario("1", nome, "www.sdfsdfsdf"));
          return new ResponseEntity<List<Usuario>>(ls, HttpStatus.OK);
     }
   
