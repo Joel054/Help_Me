@@ -19,6 +19,7 @@ public class Usuario {
     private int idade;//não usado
     private int likes;
     private int deslikes;
+    private String foto;
     private String linkFacebook;
     private List<Ajuda> ajudas;
     private List<Local> locais;
@@ -115,5 +116,14 @@ public class Usuario {
     public void setAjudas() throws Exception{
         AjudaCRUD ac = new AjudaCRUD();
         ajudas = ac.ListaAjudas(id);
+    }
+    
+    
+    public String getFoto() {
+        return foto;
+    }
+
+    public void setFoto(String foto) {
+        this.foto = foto;
     }
 }

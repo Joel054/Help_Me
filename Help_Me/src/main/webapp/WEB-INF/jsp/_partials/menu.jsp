@@ -8,7 +8,7 @@
     <div class="nav-wrapper yellow container">
         <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
         <!--menu normal-->
-        <a href="javascript:inicio.submit()" class="hide-on-med-and-down"><img src="img/logo-nova-texto.png" style="height: 62px; width: 132px; font-family: moon;"></a>
+        <a href="javascript:login.submit()" class="hide-on-med-and-down"><img src="img/logo-nova-texto.png" style="height: 62px; width: 132px; font-family: moon;"></a>
         <!--localidade-->
         <div class="brand-logo center hide-on-med-and-down">
             <a class="dropdown-trigger black-text" href="#" style="font-family: moon;" data-target="dropdown">${facebook.local}<i
@@ -29,7 +29,7 @@
                      <a href='javascript:perfil.submit()' class="black-text"><img src="${facebook.foto}" class="circle">Perfil</a>
                 </li>
                 <li><a href="javascript:login.submit()" class="black-text">Inicio</a></li>
-                <li><a href='javascript:perfil.submit()' class="black-text">historico</a></li>
+                <li><a href='javascript:perfil.submit()' class="black-text">Historico</a></li>
                 <li><a href="index.jsp" class="fb-login-button black-text" data-button-type="login_with"  data-auto-logout-link="true" data-use-continue-as="true">Sair</a></li>
                 
             </ul>

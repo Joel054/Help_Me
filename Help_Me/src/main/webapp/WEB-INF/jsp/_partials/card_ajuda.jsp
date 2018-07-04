@@ -22,7 +22,7 @@
                                         <div class="col s12 m4">
                                             <div class="row">
                                                 <div class="col s6 m3">
-                                                    <img src="${facebook.foto}" class="circle" height="60px" width="60px" src="img/1.jpg">
+                                                    <img src="${ajuda.usuario.foto}" class="circle" height="60px" width="60px" src="img/1.jpg">
                                                 </div>
                                                 <div class="col s6 m9 m-t-20">
                                                     <h6>${ajuda.usuario.nome}</h6>
@@ -144,7 +144,7 @@
                                         <div class="col s12 m4">
                                             <div class="row">
                                                 <div class="col s6 m3">
-                                                    <img src="${facebook.foto}" class="circle" height="60px" width="60px" src="img/1.jpg">
+                                                    <img src="${ajuda.usuario.foto}" class="circle" height="60px" width="60px" src="img/1.jpg">
                                                 </div>
                                                 <div class="col s6 m9 m-t-20">
                                                     <h6>${ajuda.usuario.nome} </h6>

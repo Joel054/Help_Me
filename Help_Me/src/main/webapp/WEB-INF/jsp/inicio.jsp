@@ -49,13 +49,26 @@
             </div>
         </div>
     </div>
+    
+    <c:if test="${not empty UsuarioLogado.nome}">
+        <div class="center"> 
+            <p>teste</p>
+        </div>    
+    </c:if>
+    
+    <c:choose>
+        <c:when test="${UsuarioLogado.locais.size() == 0}">
+            <div class="container center">               
+                <h3 >Bem vindo(a) ${UsuarioLogado.nome}</h3>
+                <h4>Já que é sua primeira vez aqui, <b>adicione um local</b> no botão abaixo <i class="material-icons">arrow_downward</i> , para que possamos localizar ajudas.</h4><br>
+                <a href="#modal-novolocal" class="btn-floating btn-large waves-effect waves-light light-red modal-trigger pulse"><i class="material-icons">add_location</i></a>
+            </div>
+        </c:when>
+    </c:choose> 
+    
     <!--Card ajuda-->
-    <jsp:include page="_partials/card_ajuda.jsp" flush="true" />>
-    <!--card detalhes da ajuda-->
-    <jsp:include page="_partials/card_detalhes.jsp" flush="true" />
-    <!--Card solicitação pedido-->
-    <jsp:include page="_partials/card_solicitacao-ajuda.jsp" flush="true" />
-    <!--End Card solicitação pedido-->
+    <jsp:include page="_partials/card_ajuda.jsp" flush="true" />
+    
     <!-- armazenar info para chamar perfil no menu -->
     <form action="login" method="post" id="login" name="login">
         <input type="hidden" name="linkFacebook" value="${UsuarioLogado.linkFacebook}"/>

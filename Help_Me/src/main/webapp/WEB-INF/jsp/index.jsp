@@ -172,7 +172,7 @@
     <div class="container">
         <div class="row"><img src="img/abelha.gif" alt="" style="height: 100%; width: 100%; margin-top: 40px;"></div>
     </div>
-
+    
     <div class="carousel" id="sobre">
         <div class="row"><h4 class="center">Inspire-se!</h4></div>
         <a class="carousel-item" href="#one!"><img src="img/uno.jpg"></a>
