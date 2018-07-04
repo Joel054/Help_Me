@@ -49,13 +49,7 @@
             </div>
         </div>
     </div>
-    
-    <c:if test="${not empty UsuarioLogado.nome}">
-        <div class="center"> 
-            <p>teste</p>
-        </div>    
-    </c:if>
-    
+
     <c:choose>
         <c:when test="${UsuarioLogado.locais.size() == 0}">
             <div class="container center">               
