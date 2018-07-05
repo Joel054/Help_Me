@@ -46,7 +46,7 @@
                     <div class="col s8 m8">    
                         <p>${facebook.nome}</p>
                     </div>
-                        <a href="#name"><span class="white-text name">Olï¿½</span></a>
+                        <a href="#name"><span class="white-text name">Olá</span></a>
                         <a><span class="white-text email">Oriente-se</span></a>
                     </div>
                 </div>
