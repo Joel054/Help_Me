@@ -33,8 +33,12 @@
     
     // select
     $(document).ready(function(){
-    $('select').formSelect();
-  });
+        $('select').formSelect();
+      });
+  
+    $(document).ready(function(){
+      $('.tabs').tabs();
+    });
 
 
 </script>

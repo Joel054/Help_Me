@@ -142,7 +142,7 @@
                      <!-- Modal Trigger -->
                     <a class="waves-effect waves-light btn modal-trigger deep-orange" href="#login">Entrar</a>
                     <a class="waves-effect waves-light btn modal-trigger orange" href="#cadastro">Cadastrar-se</a>
-  
+                    
                     <!-- Modal Structure -->
                     <div id="login" class="modal">
                         <div class="modal-content">
