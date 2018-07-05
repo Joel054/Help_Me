@@ -11,13 +11,8 @@
         <a href="javascript:login.submit()" class="hide-on-med-and-down"><img src="img/logo-nova-texto.png" style="height: 62px; width: 132px; font-family: moon;"></a>
         <!--localidade-->
         <div class="brand-logo center hide-on-med-and-down">
-            <a class="dropdown-trigger black-text" href="#" style="font-family: moon;" data-target="dropdown">${facebook.local}<i
-                    class="material-icons right black-text">expand_more</i></a>
-            <ul id="dropdown" class="dropdown-content" style="font-family: moon;">
-                <c:forEach var="locais" items="${UsuarioLogado.locais}">
-                    <li><a href="#!" class="black-text">${locais.nome}</a></li>
-                </c:forEach>
-            </ul>
+            <a class=" black-text" href="#" style="font-family: moon;" data-target="dropdown">${facebook.local}</a>
+            
         </div>
         <!--menu: inicio, historico-->
          <div class="brand-logo right hide-on-med-and-down">
@@ -46,7 +41,7 @@
                     <div class="col s8 m8">    
                         <p>${facebook.nome}</p>
                     </div>
-                        <a href="#name"><span class="white-text name">Olá</span></a>
+                        <a href="#name"><span class="white-text name">olá</span></a>
                         <a><span class="white-text email">Oriente-se</span></a>
                     </div>
                 </div>
