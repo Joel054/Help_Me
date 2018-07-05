@@ -5,9 +5,10 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>Help Mi</title>
+    <title>Help Me</title>
     <!--Import Google Icon Font-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
     <!--Import materialize.css-->
     <!-- Compiled and minified CSS -->
     <link rel="stylesheet" href="css/materialize.css">
@@ -49,7 +50,6 @@
             </div>
         </div>
     </div>
-
     <c:choose>
         <c:when test="${UsuarioLogado.locais.size() == 0}">
             <div class="container center">               

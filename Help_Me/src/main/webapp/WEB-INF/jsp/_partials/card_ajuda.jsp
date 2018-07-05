@@ -116,7 +116,7 @@
                                                     </c:choose>
                                                 </c:forEach> 
                                                 <% if(oq == true){ %>
-                                                    <p class="black-text">Esta ajuda ainda nao tem pedidos!</p>
+                                                    <p class="black-text">Esta ajuda ainda não tem pedidos!</p>
                                                 <% } %>  
                                             </c:otherwise>
                                         </c:choose>   
@@ -241,7 +241,7 @@
                                                     </c:choose>
                                                 </c:forEach> 
                                                 <% if(oq1 == true){ %>
-                                                    <p class="black-text">Esta ajuda ainda nao tem pedidos!</p>
+                                                    <p class="black-text">Esta ajuda ainda não tem pedidos!</p>
                                                 <% } %>  
                                             </c:otherwise>
                                         </c:choose>   
